@@ -32,7 +32,7 @@ from datetime import datetime
 
 # === EDITE ESTAS DUAS CONSTANTES SE QUISER OUTRO NOME/EMAIL NO LICENSE ===
 AUTHOR_NAME = "Victor Gonçalves Souto"
-AUTHOR_EMAIL = "victorgsouto20@gmail.com"
+AUTHOR_EMAIL = "victor@soutoconsultoria.com.br"
 GITHUB_USER = "VictorGSoutoXP"
 PROJECT_NAME = "AstroBridge"
 # =========================================================================
