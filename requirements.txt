@@ -1,11 +1,27 @@
-pandas>=2.2
+# core
+pandas>=2.2,<3.0
 numpy>=1.26
+scipy>=1.12
+
+# astronomia
 astropy>=6.0
 astroquery>=0.4.7
-matplotlib>=3.8
-scipy>=1.12
+lightkurve>=2.6
+
+# ML / estatística
 scikit-learn>=1.4
+
+# I/O
 pyarrow>=15.0
+
+# utilidades
+matplotlib>=3.8
 tqdm>=4.66
+
+# ambiente jupyter
+ipykernel>=7.0
+jupyterlab>=4.0
+
+# dev (opcional, mas listado para reprodutibilidade)
 pytest>=8.0
 ruff>=0.6
