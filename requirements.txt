@@ -17,6 +17,7 @@ pyarrow>=15.0
 # utilidades
 matplotlib>=3.8
 tqdm>=4.66
+tabulate>=0.9
 
 # ambiente jupyter
 ipykernel>=7.0
