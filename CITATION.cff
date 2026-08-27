@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use AstroBridge, please cite the software release and the method references."
+title: "AstroBridge"
+type: software
+authors:
+  - family-names: "Souto"
+    given-names: "Victor Gonçalves"
+    email: "victor@soutoconsultoria.com.br"
+repository-code: "https://github.com/VictorGSoutoXP/AstroBridge"
+url: "https://github.com/VictorGSoutoXP/AstroBridge"
+version: "0.2.0.dev0"
+license: MIT
+keywords:
+  - astronomy
+  - catalog cross-match
+  - Bayesian inference
+  - Gaia
+  - AllWISE

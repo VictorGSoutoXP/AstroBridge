@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 def plot_cmd(matches: pd.DataFrame, output_path: str | Path) -> None:
