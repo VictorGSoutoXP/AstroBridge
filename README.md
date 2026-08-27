@@ -64,6 +64,20 @@ The corrected interpretation is documented in
 [`reports/VALIDATION_REPORT.md`](reports/VALIDATION_REPORT.md). The notebook remains useful as
 an exploratory membership diagnostic, not as cross-match ground truth.
 
+### Official Gaia DR3-AllWISE algorithm comparison
+
+An exploratory six-field comparison with the official Gaia DR3-AllWISE best-neighbour table
+found all 163 least-ambiguous official associations inside the AstroBridge candidate sets.
+AstroBridge selected the same counterpart for 159, selected no different counterpart, and left
+four below its posterior threshold. This is 97.5% **agreement with another algorithm**, not
+ground-truth accuracy. The clean official subset favors easier cases and does not cover extreme
+proper motion such as Proxima, which has no official best-neighbour entry in the queried table.
+
+See [`reports/GAIA_ALLWISE_REFERENCE_BENCHMARK.md`](reports/GAIA_ALLWISE_REFERENCE_BENCHMARK.md)
+for the protocol, field-level results, sensitivity grid, and leakage warning.
+The next field set and decision rule are frozen in
+[`docs/GAIA_ALLWISE_CONFIRMATORY_PROTOCOL.md`](docs/GAIA_ALLWISE_CONFIRMATORY_PROTOCOL.md).
+
 ## Installation
 
 ```bash
@@ -112,6 +126,8 @@ ruff format src tests scripts --check
 pytest tests/
 
 astrobridge-validate --field-radius-deg 0.02
+
+astrobridge-reference-validate --ra 119.5 --dec -60.83 --radius 0.05
 ```
 
 All automated tests are deterministic and make no network requests. Live service checks belong
@@ -151,6 +167,8 @@ AstroBridge/
 - [x] **Association engine:** multi-candidate search, positional Bayes factor, density prior,
   one-to-one resolution, and unmatched option.
 - [x] **Deterministic validation:** unit tests and known-truth synthetic density stress test.
+- [x] **External algorithm comparison:** exploratory agreement study against the official Gaia
+  DR3-AllWISE best-neighbour table, explicitly not treated as ground truth.
 - [ ] **External association benchmark:** reproduce NWAY on XMM-COSMOS or another published
   truth set.
 - [ ] **Held-out sky validation:** evaluate multiple clusters/fields and the official Gaia

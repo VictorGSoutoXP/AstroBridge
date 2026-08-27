@@ -15,6 +15,19 @@ from astrobridge.plots import plot_cmd, plot_distance_distribution
 from astrobridge.simbad import add_simbad_flags
 
 
+def expanded_catalog_radius_deg(radius_deg: float, candidate_radius_arcsec: float) -> float:
+    """Expand a secondary-catalog cone so edge sources remain eligible candidates."""
+
+    if radius_deg <= 0 or radius_deg > 180:
+        raise ValueError("radius_deg must be in the interval (0, 180]")
+    if candidate_radius_arcsec <= 0:
+        raise ValueError("candidate_radius_arcsec must be positive")
+    expanded = radius_deg + candidate_radius_arcsec / 3600.0
+    if expanded > 180:
+        raise ValueError("expanded catalog radius cannot exceed 180 degrees")
+    return expanded
+
+
 def run_pipeline(
     ra: float,
     dec: float,
@@ -26,11 +39,21 @@ def run_pipeline(
     gaia_limit: int = 20000,
     simbad_limit: int = 100,
 ) -> None:
+    if not 0.0 < min_posterior < 1.0:
+        raise ValueError("min_posterior must be between zero and one")
+    if not 0.0 <= expected_match_fraction <= 1.0:
+        raise ValueError("expected_match_fraction must be between zero and one")
+    if gaia_limit <= 0:
+        raise ValueError("gaia_limit must be positive")
+    if simbad_limit < 0:
+        raise ValueError("simbad_limit must be non-negative")
+
     output_path = Path(out)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
+    wise_radius = expanded_catalog_radius_deg(radius, threshold_arcsec)
     gaia = fetch_gaia_dr3(ra=ra, dec=dec, radius=radius, limit=gaia_limit)
-    wise = fetch_allwise(ra=ra, dec=dec, radius=radius)
+    wise = fetch_allwise(ra=ra, dec=dec, radius=wise_radius)
 
     gaia_epoch = propagate_gaia_position(gaia, from_epoch=2016.0, to_epoch=2010.5)
     gaia_with_motion = gaia_epoch.loc[gaia_epoch["proper_motion_available"]].reset_index(drop=True)
@@ -53,7 +76,7 @@ def run_pipeline(
         left_dec="dec_epoch",
         candidate_radius_arcsec=threshold_arcsec,
         min_posterior=min_posterior,
-        area_solid_angle_sr=cone_solid_angle_sr(radius),
+        area_solid_angle_sr=cone_solid_angle_sr(wise_radius),
         expected_match_fraction=expected_match_fraction,
     )
     matches_pm = match_result.matches
