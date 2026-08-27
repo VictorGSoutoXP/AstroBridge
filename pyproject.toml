@@ -1,14 +1,14 @@
 [project]
 name = "astrobridge"
-version = "0.1.0"
-description = "Probabilistic point-source cross-matching: Gaia DR3 × AllWISE × TESS with Budavári-Szalay Bayes factors and FLINT-α novelty detection."
+version = "0.2.0.dev0"
+description = "Traceable probabilistic point-source cross-matching for astronomical catalogs."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Victor Gonçalves Souto", email = "victor@soutoconsultoria.com.br"}
 ]
-keywords = ["astronomy", "cross-match", "gaia", "wise", "bayesian", "flint"]
+keywords = ["astronomy", "cross-match", "gaia", "wise", "bayesian"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
@@ -24,9 +24,6 @@ dependencies = [
     "scipy>=1.12",
     "astropy>=6.0",
     "astroquery>=0.4.7",
-    "lightkurve>=2.6",
-    "scikit-learn>=1.4",
-    "pyarrow>=15.0",
     "matplotlib>=3.8",
     "tqdm>=4.66",
 ]
@@ -35,6 +32,11 @@ dependencies = [
 dev = [
     "pytest>=8.0",
     "ruff>=0.6",
+]
+notebooks = [
+    "lightkurve>=2.6",
+    "scikit-learn>=1.4",
+    "pyarrow>=15.0",
     "ipykernel>=7.0",
     "jupyterlab>=4.0",
 ]
@@ -42,6 +44,10 @@ dev = [
 [project.urls]
 Repository = "https://github.com/VictorGSoutoXP/AstroBridge"
 Issues = "https://github.com/VictorGSoutoXP/AstroBridge/issues"
+
+[project.scripts]
+astrobridge = "astrobridge.pipeline:main"
+astrobridge-validate = "astrobridge.validation_cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

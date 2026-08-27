@@ -1,3 +1,6 @@
+# Ambiente legado completo para notebooks e desenvolvimento.
+# Para o pacote, prefira: pip install -e ".[dev]" ou ".[dev,notebooks]".
+
 # core
 pandas>=2.2,<3.0
 numpy>=1.26

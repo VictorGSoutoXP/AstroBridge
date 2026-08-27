@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  lint-and-smoke-test:
+  lint-and-test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -25,12 +25,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install ruff pytest
-          pip install -r requirements.txt
+          pip install -e ".[dev]"
 
       - name: Lint with ruff
-        run: ruff check . --output-format=github
-        continue-on-error: true  # warnings don't block; remove later when codebase is clean
+        run: |
+          ruff check src tests scripts --output-format=github
+          ruff format src tests scripts --check
 
-      - name: Run smoke tests
+      - name: Run deterministic tests
         run: pytest tests/ -v --tb=short

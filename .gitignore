@@ -9,6 +9,10 @@ venv/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
+*.egg-info/
+build/
+dist/
+.claude/settings.local.json
 .DS_Store
 Thumbs.db
 data/raw/*

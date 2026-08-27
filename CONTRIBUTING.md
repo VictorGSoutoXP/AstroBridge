@@ -5,6 +5,8 @@ developed by an independent contributor. Collaboration is welcome, especially fr
 astronomers, statisticians, and ML researchers interested in probabilistic
 cross-matching and novelty detection in astronomical surveys.
 
+Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md).
+
 ## How to collaborate
 
 ### Reporting issues
@@ -50,10 +52,15 @@ See `README.md` for installation. For development, also install dev dependencies
 pip install -e ".[dev]"
 ```
 
+Use `pip install -e ".[dev,notebooks]"` only when working on the exploratory notebooks.
+
 ## Running tests
 
 ```bash
+ruff check src tests scripts
+ruff format src tests scripts --check
 pytest tests/
+astrobridge-validate --field-radius-deg 0.02
 ```
 
 ## License

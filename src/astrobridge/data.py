@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import pandas as pd
 import astropy.units as u
+import pandas as pd
 from astropy.coordinates import SkyCoord
 from astroquery.gaia import Gaia
 from astroquery.ipac.irsa import Irsa
@@ -12,7 +12,9 @@ def fetch_gaia_dr3(ra: float, dec: float, radius: float, limit: int = 20000) -> 
     SELECT TOP {int(limit)}
         source_id,
         ra,
+        ra_error,
         dec,
+        dec_error,
         parallax,
         parallax_error,
         pmra,
