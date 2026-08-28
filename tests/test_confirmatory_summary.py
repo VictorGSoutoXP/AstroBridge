@@ -1,10 +1,14 @@
+from pathlib import Path
+from runpy import run_path
+
 import pytest
 
-from scripts.summarize_gaia_allwise_confirmatory import (
-    aggregate_metrics,
-    comparison_diagnostics,
-    wilson_interval,
+_SCRIPT = run_path(
+    str(Path(__file__).resolve().parents[1] / "scripts" / "summarize_gaia_allwise_confirmatory.py")
 )
+aggregate_metrics = _SCRIPT["aggregate_metrics"]
+comparison_diagnostics = _SCRIPT["comparison_diagnostics"]
+wilson_interval = _SCRIPT["wilson_interval"]
 
 
 def _metrics(*, clean, candidates, agreements, coverage, agreement_rate):
