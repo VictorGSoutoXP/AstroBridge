@@ -1,0 +1,115 @@
+{
+  "astrobridge_version": "0.2.0.dev0",
+  "configuration": {
+    "allwise_radius_deg": 0.050555555555555555,
+    "candidate_radius_arcsec": 2.0,
+    "dec_deg": 15.87,
+    "expected_match_fraction": 0.7,
+    "gaia_limit": 5000,
+    "gaia_radius_deg": 0.05,
+    "min_posterior": 0.5,
+    "propagated_gaia_max_radius_deg": 0.049004285335579,
+    "ra_deg": 66.75,
+    "service_retry_count": 0
+  },
+  "execution": {
+    "allwise_query": {
+      "catalog": "allwise_p3as_psd",
+      "dec_deg": 15.87,
+      "ra_deg": 66.75,
+      "radius_deg": 0.050555555555555555,
+      "service": "IRSA",
+      "spatial": "Cone"
+    },
+    "dependency_versions": {
+      "astropy": "7.2.0",
+      "astroquery": "0.4.11",
+      "numpy": "1.26.4",
+      "pandas": "2.2.2",
+      "scipy": "1.13.1"
+    },
+    "gaia_adql": "SELECT TOP 5001\n        source_id,\n        ra,\n        ra_error,\n        dec,\n        dec_error,\n        parallax,\n        parallax_error,\n        pmra,\n        pmra_error,\n        pmdec,\n        pmdec_error,\n        phot_g_mean_mag,\n        phot_bp_mean_mag,\n        phot_rp_mean_mag,\n        bp_rp,\n        ruwe\n    FROM gaiadr3.gaia_source\n    WHERE CONTAINS(\n        POINT('ICRS', ra, dec),\n        CIRCLE('ICRS', 66.75, 15.87, 0.05)\n    ) = 1\n    ORDER BY source_id",
+    "git": {
+      "commit": "b5f74cad41ef4da9acdc93e51828ffff28ac681a",
+      "tracked_files_dirty": false
+    },
+    "official_reference_adql": [
+      "SELECT\n            source_id,\n        original_ext_source_id,\n        angular_distance,\n        xm_flag,\n        allwise_oid,\n        number_of_neighbours,\n        number_of_mates\n        FROM gaiadr3.allwise_best_neighbour\n        WHERE source_id IN (3312786173226959104, 3312786173227258880, 3312786173227402112, 3312786551185378688, 3312786551185379712, 3312786551185379840, 3312786585545116032, 3312786615608808960, 3312786619903549696, 3312786684328286208, 3312786684328288384, 3312786688623025792, 3312786688623524224, 3312786718688036480, 3312786722983103872, 3312789128165060096, 3312789128165757952, 3312789128165758080, 3312789192589182720, 3312789196884380928, 3312789364387876864, 3312789368683842048, 3312789398747623168, 3312789467467105664, 3312789471763056640, 3312789501826830208, 3312789501827034624, 3312789536186577664, 3312789540483699200, 3312789570546312064, 3312789574841357184, 3312789574842355200, 3312789574842355456, 3312789604906057216, 3312789609200789632, 3312789609202092928, 3312789643560526336, 3312789643560977792, 3312789673625534464, 3312789707985274624, 3312789780999787264, 3312789811064489088, 3312789811064492416, 3312789811064493056, 3312789811064921856, 3312789884078455552, 3312789948503457408, 3312789948503461632, 3312789948503699968, 3312789952798164096, 3312789982863196544, 3312789982863197696, 3312789987159128832, 3312790017222935168, 3312790017222940032, 3312790017222941056, 3312790021517405568, 3312790021517406336, 3312790223381682048, 3312790635698224000, 3312790635698224256, 3312790708712872832, 3312790743073373056, 3312791155389465856, 3312791155390315904, 3312791219813777280, 3312791430267374720, 3312791498986704896, 3312791498986853248, 3312791498987615616, 3312791498987616384, 3312792254901859968)"
+    ],
+    "python_version": "3.12.10"
+  },
+  "generated_at_utc": "2026-08-28T18:08:55.037581+00:00",
+  "input_manifest": {
+    "allwise_content_sha256": "56b1db6dc15c935f576225824b7c32b88dee5c575567ed2c3b340b8db1517110",
+    "allwise_designations_sha256": "b30b0497640c6aedc7279ab2b6228dabd20b6d21af7614b9e2f7183a7988976c",
+    "allwise_rows_downloaded": 139,
+    "allwise_sources_in_prior_footprint": 137,
+    "candidate_pairs_content_sha256": "a2557ce6558bac9c52c0b1a76ce1e24e043be6f27d56e6f7735b407c8d3512aa",
+    "comparison_content_sha256": "308a7e95d67c2ee2f6b929e07ea0f6441b7900910cc4403e43ed016daa13b0d3",
+    "gaia_content_sha256": "26f3a8e7647f68165616e6431f88e10111ff590f02a6eb1b0e92c1c6818cbfa8",
+    "gaia_matchable_sources": 72,
+    "gaia_query_limit_reached": false,
+    "gaia_rows_downloaded": 86,
+    "gaia_source_ids_sha256": "2e4ffc1883253a37b9777476129e6f35296c3a3f0d80b3106f27efaf5f647948",
+    "official_reference_content_sha256": "6db65004e4ec13dcf231ad7b7a060fdc70f0e23da42739055716005c84850422",
+    "official_reference_rows": 53,
+    "selected_associations_content_sha256": "b7453bdb876b649ad403a5d7676c851e5b554a543009b3ca2db4e5ddd13ed489"
+  },
+  "interpretation": "Agreement with an external algorithm, not ground-truth accuracy.",
+  "metrics": {
+    "agreement_rate_on_clean_reference": 0.9622641509433962,
+    "agreement_when_selected": 1.0,
+    "agreements": 51,
+    "allwise_sources": 139,
+    "candidate_coverage": 1.0,
+    "candidate_pairs": 55,
+    "clean_official_associations": 53,
+    "disagreements": 0,
+    "gaia_sources": 72,
+    "official_associations": 53,
+    "reference_candidate_not_selected": 2,
+    "reference_in_candidate_set": 53,
+    "reference_missing_from_candidates": 0,
+    "selected_associations": 51,
+    "selected_without_clean_reference": 0,
+    "selection_given_reference_candidate": 0.9622641509433962
+  },
+  "prior": {
+    "allwise_sources": 137,
+    "common_footprint_radius_deg": 0.05,
+    "common_footprint_solid_angle_sr": 2.39245946859801e-06,
+    "effective_odds": 9.777704526855014e-10,
+    "gaia_sources": 72,
+    "model": "finite-footprint odds scaled by area/(4*pi) for all-sky Bayes factor"
+  },
+  "reference": {
+    "clean_subset": "xm_flag == 8 and number_of_neighbours == 1 and number_of_mates == 0",
+    "doi": "10.17876/gaia/dr.3/29",
+    "table": "gaiadr3.allwise_best_neighbour"
+  },
+  "sensitivity": [
+    {
+      "expected_match_fraction": 0.7,
+      "metrics": {
+        "agreement_rate_on_clean_reference": 0.9622641509433962,
+        "agreement_when_selected": 1.0,
+        "agreements": 51,
+        "allwise_sources": 139,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 55,
+        "clean_official_associations": 53,
+        "disagreements": 0,
+        "gaia_sources": 72,
+        "official_associations": 53,
+        "reference_candidate_not_selected": 2,
+        "reference_in_candidate_set": 53,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 51,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.9622641509433962
+      },
+      "min_posterior": 0.1,
+      "prior_odds": 9.777704526855014e-10
+    }
+  ]
+}

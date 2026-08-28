@@ -1,0 +1,667 @@
+{
+  "aggregate_field_count": 10,
+  "artifact_generation_time_range_utc": [
+    "2026-08-28T18:05:12.834288+00:00",
+    "2026-08-28T18:09:01.938727+00:00"
+  ],
+  "decision_rule": {
+    "agreement_wilson_lower_at_least_0_90": false,
+    "all_different_counterparts_inspected": true,
+    "candidate_coverage_at_least_0_95": true,
+    "different_counterparts_to_inspect": 0,
+    "engineering_comparator_passed": false
+  },
+  "field_count": 10,
+  "fields": [
+    {
+      "artifact": "reports/benchmark_data/north_galactic_pole.json",
+      "comparison_artifact": "reports/benchmark_data/north_galactic_pole.csv",
+      "field": "North Galactic Pole",
+      "generated_at_utc": "2026-08-28T18:05:12.834288+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": 1.0,
+        "agreement_when_selected": 1.0,
+        "agreements": 13,
+        "allwise_sources": 115,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 16,
+        "clean_official_associations": 13,
+        "disagreements": 0,
+        "gaia_sources": 20,
+        "official_associations": 15,
+        "reference_candidate_not_selected": 0,
+        "reference_in_candidate_set": 13,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 14,
+        "selected_without_clean_reference": 1,
+        "selection_given_reference_candidate": 1.0
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 0,
+          "maximum": null,
+          "median": null,
+          "minimum": null
+        },
+        "status_counts": {
+          "agreement": 13
+        }
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": 1.0,
+        "agreement_when_selected": 1.0,
+        "agreements": 13,
+        "allwise_sources": 115,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 16,
+        "clean_official_associations": 13,
+        "disagreements": 0,
+        "gaia_sources": 20,
+        "official_associations": 15,
+        "reference_candidate_not_selected": 0,
+        "reference_in_candidate_set": 13,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 14,
+        "selected_without_clean_reference": 1,
+        "selection_given_reference_candidate": 1.0
+      },
+      "service_retry_count": 0,
+      "slug": "north_galactic_pole",
+      "truncated": false
+    },
+    {
+      "artifact": "reports/benchmark_data/south_galactic_pole.json",
+      "comparison_artifact": "reports/benchmark_data/south_galactic_pole.csv",
+      "field": "South Galactic Pole",
+      "generated_at_utc": "2026-08-28T18:05:12.839991+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": 0.9285714285714286,
+        "agreement_when_selected": 1.0,
+        "agreements": 13,
+        "allwise_sources": 111,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 14,
+        "clean_official_associations": 14,
+        "disagreements": 0,
+        "gaia_sources": 18,
+        "official_associations": 14,
+        "reference_candidate_not_selected": 1,
+        "reference_in_candidate_set": 14,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 13,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.9285714285714286
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 1,
+          "maximum": 0.2081013501225362,
+          "median": 0.2081013501225362,
+          "minimum": 0.2081013501225362
+        },
+        "status_counts": {
+          "agreement": 13,
+          "candidate_not_selected": 1
+        }
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": 1.0,
+        "agreement_when_selected": 1.0,
+        "agreements": 14,
+        "allwise_sources": 111,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 14,
+        "clean_official_associations": 14,
+        "disagreements": 0,
+        "gaia_sources": 18,
+        "official_associations": 14,
+        "reference_candidate_not_selected": 0,
+        "reference_in_candidate_set": 14,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 14,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 1.0
+      },
+      "service_retry_count": 0,
+      "slug": "south_galactic_pole",
+      "truncated": false
+    },
+    {
+      "artifact": "reports/benchmark_data/galactic_anticenter.json",
+      "comparison_artifact": "reports/benchmark_data/galactic_anticenter.csv",
+      "field": "Galactic anticenter",
+      "generated_at_utc": "2026-08-28T18:05:49.699049+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": 0.926829268292683,
+        "agreement_when_selected": 1.0,
+        "agreements": 38,
+        "allwise_sources": 72,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 56,
+        "clean_official_associations": 41,
+        "disagreements": 0,
+        "gaia_sources": 90,
+        "official_associations": 47,
+        "reference_candidate_not_selected": 3,
+        "reference_in_candidate_set": 41,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 38,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.926829268292683
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 3,
+          "maximum": 0.26189536930396046,
+          "median": 0.24921678523697496,
+          "minimum": 0.032809109066841764
+        },
+        "status_counts": {
+          "agreement": 38,
+          "candidate_not_selected": 3
+        }
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": 0.975609756097561,
+        "agreement_when_selected": 1.0,
+        "agreements": 40,
+        "allwise_sources": 72,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 56,
+        "clean_official_associations": 41,
+        "disagreements": 0,
+        "gaia_sources": 90,
+        "official_associations": 47,
+        "reference_candidate_not_selected": 1,
+        "reference_in_candidate_set": 41,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 40,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.975609756097561
+      },
+      "service_retry_count": 0,
+      "slug": "galactic_anticenter",
+      "truncated": false
+    },
+    {
+      "artifact": "reports/benchmark_data/vela_plane.json",
+      "comparison_artifact": "reports/benchmark_data/vela_plane.csv",
+      "field": "Vela plane",
+      "generated_at_utc": "2026-08-28T18:05:59.550530+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": 0.8333333333333334,
+        "agreement_when_selected": 1.0,
+        "agreements": 25,
+        "allwise_sources": 56,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 60,
+        "clean_official_associations": 30,
+        "disagreements": 0,
+        "gaia_sources": 340,
+        "official_associations": 32,
+        "reference_candidate_not_selected": 5,
+        "reference_in_candidate_set": 30,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 25,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.8333333333333334
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 5,
+          "maximum": 0.0366877011987527,
+          "median": 0.02147568666525783,
+          "minimum": 0.003766975122507391
+        },
+        "status_counts": {
+          "agreement": 25,
+          "candidate_not_selected": 5
+        }
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": 0.8333333333333334,
+        "agreement_when_selected": 1.0,
+        "agreements": 25,
+        "allwise_sources": 56,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 60,
+        "clean_official_associations": 30,
+        "disagreements": 0,
+        "gaia_sources": 340,
+        "official_associations": 32,
+        "reference_candidate_not_selected": 5,
+        "reference_in_candidate_set": 30,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 25,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.8333333333333334
+      },
+      "service_retry_count": 0,
+      "slug": "vela_plane",
+      "truncated": false
+    },
+    {
+      "artifact": "reports/benchmark_data/baade_window.json",
+      "comparison_artifact": "reports/benchmark_data/baade_window.csv",
+      "field": "Baade window",
+      "generated_at_utc": "2026-08-28T18:06:40.349471+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": 0.75,
+        "agreement_when_selected": 1.0,
+        "agreements": 9,
+        "allwise_sources": 33,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 41,
+        "clean_official_associations": 12,
+        "disagreements": 0,
+        "gaia_sources": 872,
+        "official_associations": 15,
+        "reference_candidate_not_selected": 3,
+        "reference_in_candidate_set": 12,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 9,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.75
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 3,
+          "maximum": 0.08498503174617951,
+          "median": 0.032413095490539626,
+          "minimum": 0.023180310792766907
+        },
+        "status_counts": {
+          "agreement": 9,
+          "candidate_not_selected": 3
+        }
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": 0.75,
+        "agreement_when_selected": 1.0,
+        "agreements": 9,
+        "allwise_sources": 33,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 41,
+        "clean_official_associations": 12,
+        "disagreements": 0,
+        "gaia_sources": 872,
+        "official_associations": 15,
+        "reference_candidate_not_selected": 3,
+        "reference_in_candidate_set": 12,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 9,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.75
+      },
+      "service_retry_count": 0,
+      "slug": "baade_window",
+      "truncated": false
+    },
+    {
+      "artifact": "reports/benchmark_data/orion_nebula.json",
+      "comparison_artifact": "reports/benchmark_data/orion_nebula.csv",
+      "field": "Orion nebula",
+      "generated_at_utc": "2026-08-28T18:07:24.120074+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": null,
+        "agreement_when_selected": null,
+        "agreements": 0,
+        "allwise_sources": 5,
+        "candidate_coverage": null,
+        "candidate_pairs": 1,
+        "clean_official_associations": 0,
+        "disagreements": 0,
+        "gaia_sources": 198,
+        "official_associations": 0,
+        "reference_candidate_not_selected": 0,
+        "reference_in_candidate_set": 0,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 0,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": null
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 0,
+          "maximum": null,
+          "median": null,
+          "minimum": null
+        },
+        "status_counts": {}
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": null,
+        "agreement_when_selected": null,
+        "agreements": 0,
+        "allwise_sources": 5,
+        "candidate_coverage": null,
+        "candidate_pairs": 1,
+        "clean_official_associations": 0,
+        "disagreements": 0,
+        "gaia_sources": 198,
+        "official_associations": 0,
+        "reference_candidate_not_selected": 0,
+        "reference_in_candidate_set": 0,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 0,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": null
+      },
+      "service_retry_count": 0,
+      "slug": "orion_nebula",
+      "truncated": false
+    },
+    {
+      "artifact": "reports/benchmark_data/lmc_field.json",
+      "comparison_artifact": "reports/benchmark_data/lmc_field.csv",
+      "field": "LMC field",
+      "generated_at_utc": "2026-08-28T18:08:09.926053+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": 0.6333333333333333,
+        "agreement_when_selected": 1.0,
+        "agreements": 19,
+        "allwise_sources": 86,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 144,
+        "clean_official_associations": 30,
+        "disagreements": 0,
+        "gaia_sources": 2774,
+        "official_associations": 75,
+        "reference_candidate_not_selected": 11,
+        "reference_in_candidate_set": 30,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 23,
+        "selected_without_clean_reference": 4,
+        "selection_given_reference_candidate": 0.6333333333333333
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 11,
+          "maximum": 0.39265801944591466,
+          "median": 0.09830429063388108,
+          "minimum": 0.0005696809024588828
+        },
+        "status_counts": {
+          "agreement": 19,
+          "candidate_not_selected": 11
+        }
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": 0.8,
+        "agreement_when_selected": 1.0,
+        "agreements": 24,
+        "allwise_sources": 86,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 144,
+        "clean_official_associations": 30,
+        "disagreements": 0,
+        "gaia_sources": 2774,
+        "official_associations": 75,
+        "reference_candidate_not_selected": 6,
+        "reference_in_candidate_set": 30,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 30,
+        "selected_without_clean_reference": 6,
+        "selection_given_reference_candidate": 0.8
+      },
+      "service_retry_count": 0,
+      "slug": "lmc_field",
+      "truncated": false
+    },
+    {
+      "artifact": "reports/benchmark_data/m31_field.json",
+      "comparison_artifact": "reports/benchmark_data/m31_field.csv",
+      "field": "M31 field",
+      "generated_at_utc": "2026-08-28T18:08:05.084199+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": 1.0,
+        "agreement_when_selected": 1.0,
+        "agreements": 1,
+        "allwise_sources": 131,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 8,
+        "clean_official_associations": 1,
+        "disagreements": 0,
+        "gaia_sources": 125,
+        "official_associations": 5,
+        "reference_candidate_not_selected": 0,
+        "reference_in_candidate_set": 1,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 1,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 1.0
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 0,
+          "maximum": null,
+          "median": null,
+          "minimum": null
+        },
+        "status_counts": {
+          "agreement": 1
+        }
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": 1.0,
+        "agreement_when_selected": 1.0,
+        "agreements": 1,
+        "allwise_sources": 131,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 8,
+        "clean_official_associations": 1,
+        "disagreements": 0,
+        "gaia_sources": 125,
+        "official_associations": 5,
+        "reference_candidate_not_selected": 0,
+        "reference_in_candidate_set": 1,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 1,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 1.0
+      },
+      "service_retry_count": 0,
+      "slug": "m31_field",
+      "truncated": false
+    },
+    {
+      "artifact": "reports/benchmark_data/hyades.json",
+      "comparison_artifact": "reports/benchmark_data/hyades.csv",
+      "field": "Hyades",
+      "generated_at_utc": "2026-08-28T18:08:55.037581+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": 0.9622641509433962,
+        "agreement_when_selected": 1.0,
+        "agreements": 51,
+        "allwise_sources": 139,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 55,
+        "clean_official_associations": 53,
+        "disagreements": 0,
+        "gaia_sources": 72,
+        "official_associations": 53,
+        "reference_candidate_not_selected": 2,
+        "reference_in_candidate_set": 53,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 51,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.9622641509433962
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 2,
+          "maximum": 0.04941191943514242,
+          "median": 0.024799802466230488,
+          "minimum": 0.00018768549731855175
+        },
+        "status_counts": {
+          "agreement": 51,
+          "candidate_not_selected": 2
+        }
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": 0.9622641509433962,
+        "agreement_when_selected": 1.0,
+        "agreements": 51,
+        "allwise_sources": 139,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 55,
+        "clean_official_associations": 53,
+        "disagreements": 0,
+        "gaia_sources": 72,
+        "official_associations": 53,
+        "reference_candidate_not_selected": 2,
+        "reference_in_candidate_set": 53,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 51,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.9622641509433962
+      },
+      "service_retry_count": 0,
+      "slug": "hyades",
+      "truncated": false
+    },
+    {
+      "artifact": "reports/benchmark_data/m4.json",
+      "comparison_artifact": "reports/benchmark_data/m4.csv",
+      "field": "M4",
+      "generated_at_utc": "2026-08-28T18:09:01.938727+00:00",
+      "primary": {
+        "agreement_rate_on_clean_reference": 0.6,
+        "agreement_when_selected": 1.0,
+        "agreements": 9,
+        "allwise_sources": 63,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 84,
+        "clean_official_associations": 15,
+        "disagreements": 0,
+        "gaia_sources": 3076,
+        "official_associations": 29,
+        "reference_candidate_not_selected": 6,
+        "reference_in_candidate_set": 15,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 9,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.6
+      },
+      "primary_diagnostics": {
+        "candidate_not_selected_posterior": {
+          "count": 6,
+          "maximum": 0.43536676693507803,
+          "median": 0.037650149430277925,
+          "minimum": 0.016031761026682776
+        },
+        "status_counts": {
+          "agreement": 9,
+          "candidate_not_selected": 6
+        }
+      },
+      "secondary_threshold_0_1": {
+        "agreement_rate_on_clean_reference": 0.6666666666666666,
+        "agreement_when_selected": 1.0,
+        "agreements": 10,
+        "allwise_sources": 63,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 84,
+        "clean_official_associations": 15,
+        "disagreements": 0,
+        "gaia_sources": 3076,
+        "official_associations": 29,
+        "reference_candidate_not_selected": 5,
+        "reference_in_candidate_set": 15,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 10,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.6666666666666666
+      },
+      "service_retry_count": 0,
+      "slug": "m4",
+      "truncated": false
+    }
+  ],
+  "generated_at_utc": "2026-08-28T20:57:38.901744+00:00",
+  "implementation_commit": "b5f74cad41ef4da9acdc93e51828ffff28ac681a",
+  "input_directory": "reports/benchmark_data",
+  "interpretation": "Descriptive agreement with the official Gaia DR3-AllWISE algorithm; not ground-truth accuracy or all-sky performance.",
+  "primary": {
+    "agreements": 178,
+    "allwise_sources": 811,
+    "candidate_coverage": 1.0,
+    "candidate_coverage_wilson_95": [
+      0.9819515481524193,
+      1.0
+    ],
+    "candidate_pairs": 479,
+    "clean_official_associations": 209,
+    "disagreements": 0,
+    "field_candidate_coverage": {
+      "fields_with_defined_rate": 9,
+      "maximum": 1.0,
+      "mean": 1.0,
+      "minimum": 1.0
+    },
+    "field_same_counterpart_agreement": {
+      "fields_with_defined_rate": 9,
+      "maximum": 1.0,
+      "mean": 0.8482590571637972,
+      "minimum": 0.6
+    },
+    "gaia_sources": 7585,
+    "official_associations": 285,
+    "reference_candidate_not_selected": 31,
+    "reference_in_candidate_set": 209,
+    "reference_missing_from_candidates": 0,
+    "same_counterpart_agreement": 0.8516746411483254,
+    "same_counterpart_agreement_wilson_95": [
+      0.797158417965515,
+      0.8934964986775743
+    ],
+    "selected_associations": 183,
+    "selected_without_clean_reference": 5
+  },
+  "primary_candidate_not_selected_posterior": {
+    "count": 31,
+    "maximum": 0.43536676693507803,
+    "median": 0.0366877011987527,
+    "minimum": 0.00018768549731855175
+  },
+  "primary_disagreement_details": [],
+  "secondary_threshold_0_1": {
+    "agreements": 187,
+    "allwise_sources": 811,
+    "candidate_coverage": 1.0,
+    "candidate_coverage_wilson_95": [
+      0.9819515481524193,
+      1.0
+    ],
+    "candidate_pairs": 479,
+    "clean_official_associations": 209,
+    "disagreements": 0,
+    "field_candidate_coverage": {
+      "fields_with_defined_rate": 9,
+      "maximum": 1.0,
+      "mean": 1.0,
+      "minimum": 1.0
+    },
+    "field_same_counterpart_agreement": {
+      "fields_with_defined_rate": 9,
+      "maximum": 1.0,
+      "mean": 0.8875415452267731,
+      "minimum": 0.6666666666666666
+    },
+    "gaia_sources": 7585,
+    "official_associations": 285,
+    "reference_candidate_not_selected": 22,
+    "reference_in_candidate_set": 209,
+    "reference_missing_from_candidates": 0,
+    "same_counterpart_agreement": 0.8947368421052632,
+    "same_counterpart_agreement_wilson_95": [
+      0.8457721483954737,
+      0.9294527580406469
+    ],
+    "selected_associations": 194,
+    "selected_without_clean_reference": 7
+  },
+  "total_service_retry_count": 0,
+  "truncated_field_count": 0
+}

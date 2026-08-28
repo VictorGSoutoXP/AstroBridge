@@ -16,8 +16,9 @@ target selection, population inference, and anomaly rankings while still produci
 downstream plots. AstroBridge will develop and externally validate a transparent probabilistic
 cross-identification workflow that propagates astrometric uncertainty and proper motion,
 scores every local candidate, resolves one-to-one ambiguity, and reports calibrated match
-probabilities. The research will benchmark against published association truth sets and
-held-out sky fields, quantify performance across density, magnitude, separation, and quality
+probabilities. The research will benchmark against published, independently established
+high-confidence references and held-out sky fields, quantify performance across density,
+magnitude, separation, and quality
 regimes, and release reproducible query manifests, software, tables, and calibration products
 under an archival DOI. A later mission-specific work package may evaluate how calibrated
 Gaia/infrared associations improve use of public TESS targets and light curves, but that claim

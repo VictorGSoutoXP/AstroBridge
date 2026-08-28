@@ -1,0 +1,115 @@
+{
+  "astrobridge_version": "0.2.0.dev0",
+  "configuration": {
+    "allwise_radius_deg": 0.050555555555555555,
+    "candidate_radius_arcsec": 2.0,
+    "dec_deg": 27.1283,
+    "expected_match_fraction": 0.7,
+    "gaia_limit": 5000,
+    "gaia_radius_deg": 0.05,
+    "min_posterior": 0.5,
+    "propagated_gaia_max_radius_deg": 0.049050446400991654,
+    "ra_deg": 192.8595,
+    "service_retry_count": 0
+  },
+  "execution": {
+    "allwise_query": {
+      "catalog": "allwise_p3as_psd",
+      "dec_deg": 27.1283,
+      "ra_deg": 192.8595,
+      "radius_deg": 0.050555555555555555,
+      "service": "IRSA",
+      "spatial": "Cone"
+    },
+    "dependency_versions": {
+      "astropy": "7.2.0",
+      "astroquery": "0.4.11",
+      "numpy": "1.26.4",
+      "pandas": "2.2.2",
+      "scipy": "1.13.1"
+    },
+    "gaia_adql": "SELECT TOP 5001\n        source_id,\n        ra,\n        ra_error,\n        dec,\n        dec_error,\n        parallax,\n        parallax_error,\n        pmra,\n        pmra_error,\n        pmdec,\n        pmdec_error,\n        phot_g_mean_mag,\n        phot_bp_mean_mag,\n        phot_rp_mean_mag,\n        bp_rp,\n        ruwe\n    FROM gaiadr3.gaia_source\n    WHERE CONTAINS(\n        POINT('ICRS', ra, dec),\n        CIRCLE('ICRS', 192.8595, 27.1283, 0.05)\n    ) = 1\n    ORDER BY source_id",
+    "git": {
+      "commit": "b5f74cad41ef4da9acdc93e51828ffff28ac681a",
+      "tracked_files_dirty": false
+    },
+    "official_reference_adql": [
+      "SELECT\n            source_id,\n        original_ext_source_id,\n        angular_distance,\n        xm_flag,\n        allwise_oid,\n        number_of_neighbours,\n        number_of_mates\n        FROM gaiadr3.allwise_best_neighbour\n        WHERE source_id IN (3961613757214296960, 3961695494736752000, 3961695499031790720, 3961695533391529344, 3961695563456231040, 3961695700895343360, 3961695803974401536, 3961695842629174784, 3961695872693880192, 3961695941413358464, 3961695945707509632, 3961695945708390016, 3961696078852386816, 3961696319370517632, 3961707520645185536, 3961707593659261312, 3961707623724402176, 3961707692443880960, 3961707932962051968, 3961708074696034304)"
+    ],
+    "python_version": "3.12.10"
+  },
+  "generated_at_utc": "2026-08-28T18:05:12.834288+00:00",
+  "input_manifest": {
+    "allwise_content_sha256": "d37aebe3d2b3b804afcaea7fa51ecc809de8a6ecf1b3272f6ffda0f3ec00659d",
+    "allwise_designations_sha256": "70c2d42f26e9071bc3432e997b9c041e1a5e61f5607a09273e8836306ae46786",
+    "allwise_rows_downloaded": 115,
+    "allwise_sources_in_prior_footprint": 113,
+    "candidate_pairs_content_sha256": "92b123ca270f94c221f696d270ac453fba60533c593ae50dfa5a67f91fac3f48",
+    "comparison_content_sha256": "4b228aad6a423ae321efb62c9b9a7dc905cbeb920fdb13c254134a5c07fd49b7",
+    "gaia_content_sha256": "6ba80c21916798eae3fb1be239e995d8518bff78c01f35b17a023dfa4e960e0e",
+    "gaia_matchable_sources": 20,
+    "gaia_query_limit_reached": false,
+    "gaia_rows_downloaded": 23,
+    "gaia_source_ids_sha256": "f70fdca646a479aa3dcef70d950ca37dd784c5735c4027047e260473188c2d39",
+    "official_reference_content_sha256": "661dacb4b04748d0ffb0e0db7fcf407f87ace1c429e696ad0bdd94aa220b3c1d",
+    "official_reference_rows": 15,
+    "selected_associations_content_sha256": "8bf6f2880baf96070d30fded08d0ae899edf9aca6497faa58c7d7c0a434eb76b"
+  },
+  "interpretation": "Agreement with an external algorithm, not ground-truth accuracy.",
+  "metrics": {
+    "agreement_rate_on_clean_reference": 1.0,
+    "agreement_when_selected": 1.0,
+    "agreements": 13,
+    "allwise_sources": 115,
+    "candidate_coverage": 1.0,
+    "candidate_pairs": 16,
+    "clean_official_associations": 13,
+    "disagreements": 0,
+    "gaia_sources": 20,
+    "official_associations": 15,
+    "reference_candidate_not_selected": 0,
+    "reference_in_candidate_set": 13,
+    "reference_missing_from_candidates": 0,
+    "selected_associations": 14,
+    "selected_without_clean_reference": 1,
+    "selection_given_reference_candidate": 1.0
+  },
+  "prior": {
+    "allwise_sources": 113,
+    "common_footprint_radius_deg": 0.05,
+    "common_footprint_solid_angle_sr": 2.39245946859801e-06,
+    "effective_odds": 1.1867329715141037e-09,
+    "gaia_sources": 20,
+    "model": "finite-footprint odds scaled by area/(4*pi) for all-sky Bayes factor"
+  },
+  "reference": {
+    "clean_subset": "xm_flag == 8 and number_of_neighbours == 1 and number_of_mates == 0",
+    "doi": "10.17876/gaia/dr.3/29",
+    "table": "gaiadr3.allwise_best_neighbour"
+  },
+  "sensitivity": [
+    {
+      "expected_match_fraction": 0.7,
+      "metrics": {
+        "agreement_rate_on_clean_reference": 1.0,
+        "agreement_when_selected": 1.0,
+        "agreements": 13,
+        "allwise_sources": 115,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 16,
+        "clean_official_associations": 13,
+        "disagreements": 0,
+        "gaia_sources": 20,
+        "official_associations": 15,
+        "reference_candidate_not_selected": 0,
+        "reference_in_candidate_set": 13,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 14,
+        "selected_without_clean_reference": 1,
+        "selection_given_reference_candidate": 1.0
+      },
+      "min_posterior": 0.1,
+      "prior_odds": 1.1867329715141037e-09
+    }
+  ]
+}

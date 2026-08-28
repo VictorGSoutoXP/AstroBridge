@@ -4,6 +4,9 @@
 is the original internal registration boundary; it was not a public, independent
 preregistration.
 
+**Outcome:** the corrected run completed on all ten fields and failed the primary agreement
+criterion. See `reports/GAIA_ALLWISE_CONFIRMATORY_RESULTS.md`.
+
 ## Corrective amendment before the valid run
 
 Three fields were executed after `ca080e7`, but a subsequent code review found two

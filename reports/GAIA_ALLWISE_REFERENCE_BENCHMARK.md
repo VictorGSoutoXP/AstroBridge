@@ -1,7 +1,14 @@
 # Gaia DR3-AllWISE reference agreement study
 
 **Query date:** 2026-08-27
-**Status:** exploratory external-algorithm comparison; not ground-truth validation.
+**Status:** invalidated historical exploratory run; retained only for audit provenance.
+
+> **Do not cite the numerical results below as evidence.** The implementation used for this
+> run omitted the `1/(4*pi)` normalization required when combining the finite-footprint prior
+> with the analytic all-sky Bayes factor. Its one-to-one solver also optimized products of
+> binary probabilities rather than joint odds. Both defects were corrected in `b5f74ca`, and
+> the valid held-out result is reported in
+> `reports/GAIA_ALLWISE_CONFIRMATORY_RESULTS.md`.
 
 This study compares AstroBridge with the official Gaia DR3-AllWISE best-neighbour table. The
 official solution is a strong comparator because it uses the full Gaia five-parameter
@@ -25,7 +32,7 @@ official solution explicitly trades completeness against correctness.
 The metrics below are therefore **agreement**, **candidate coverage**, and **not selected**.
 They must not be renamed precision, recall, or accuracy.
 
-## Exploratory fields
+## Historical exploratory fields (invalidated)
 
 | Field | Center (deg) | Radius | Gaia | AllWISE | Clean official | Official in candidates | Agreements | Different selection | Not selected | Extra selections outside clean subset |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -47,7 +54,7 @@ The two extra selections occurred for Gaia sources outside the deliberately stri
 official subset. They are not labeled false positives because the reference subset excludes
 ambiguous and specially treated associations by design.
 
-## Exploratory sensitivity grid
+## Historical exploratory sensitivity grid (invalidated)
 
 A grid over minimum posterior `{0.1, 0.2, 0.3, 0.5, 0.7, 0.9}` and expected match fraction
 `{0.3, 0.7, 0.9}` was run on NGC 2516, COSMOS, Cygnus, and the Proxima field. These four fields
@@ -75,8 +82,8 @@ choose and evaluate 0.1 would leak test information.
 The Gaia source corresponding to Proxima has total proper motion of about 3,859 mas/yr in the
 queried field, but it has no entry in the official Gaia DR3-AllWISE best-neighbour table used
 here. Consequently, this comparator cannot establish performance for that extreme-motion
-case. A dedicated truth set or direct image/catalog inspection is required for high-proper-
-motion validation.
+case. A dedicated independently established reference or direct image/catalog inspection is
+required for high-proper-motion validation.
 
 ## Reproduce
 
@@ -99,17 +106,16 @@ For the sensitivity grid, add:
 --expected-fraction-grid 0.3 0.7 0.9
 ```
 
-The JSON output records the UTC query time, package version, configuration, reference DOI,
-row count, and SHA-256 hashes of the Gaia and AllWISE identifier manifests.
+The JSON output records its UTC artifact-generation time, package version, configuration,
+reference DOI, row count, and SHA-256 hashes of the Gaia and AllWISE identifier manifests.
 
-## Next confirmatory experiment
+## Resolution
 
-Before querying results, register a fixed configuration and a new field list spanning Galactic
-latitude, source density, magnitude, and proper motion. Keep the current 0.5 threshold as the
-confirmatory primary configuration; treat 0.1 as a secondary hypothesis. Report bootstrap or
-binomial uncertainty and inspect every disagreement. After that, run the independent
-NWAY/XMM-COSMOS benchmark, whose positional uncertainty and multi-candidate regime differs
-substantially from Gaia-AllWISE.
+The prospectively specified field study was rerun from scratch after the corrective boundary.
+It achieved complete candidate coverage but failed its primary agreement decision rule. See
+`reports/GAIA_ALLWISE_CONFIRMATORY_RESULTS.md`. A published benchmark with independently
+established, high-confidence counterparts remains required; NWAY/XMM-COSMOS must not be called
+ground truth without auditing how its reference labels were established.
 
 ## Sources
 

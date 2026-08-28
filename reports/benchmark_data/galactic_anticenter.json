@@ -1,0 +1,115 @@
+{
+  "astrobridge_version": "0.2.0.dev0",
+  "configuration": {
+    "allwise_radius_deg": 0.030555555555555555,
+    "candidate_radius_arcsec": 2.0,
+    "dec_deg": 28.936,
+    "expected_match_fraction": 0.7,
+    "gaia_limit": 5000,
+    "gaia_radius_deg": 0.03,
+    "min_posterior": 0.5,
+    "propagated_gaia_max_radius_deg": 0.029790293466539535,
+    "ra_deg": 86.405,
+    "service_retry_count": 0
+  },
+  "execution": {
+    "allwise_query": {
+      "catalog": "allwise_p3as_psd",
+      "dec_deg": 28.936,
+      "ra_deg": 86.405,
+      "radius_deg": 0.030555555555555555,
+      "service": "IRSA",
+      "spatial": "Cone"
+    },
+    "dependency_versions": {
+      "astropy": "7.2.0",
+      "astroquery": "0.4.11",
+      "numpy": "1.26.4",
+      "pandas": "2.2.2",
+      "scipy": "1.13.1"
+    },
+    "gaia_adql": "SELECT TOP 5001\n        source_id,\n        ra,\n        ra_error,\n        dec,\n        dec_error,\n        parallax,\n        parallax_error,\n        pmra,\n        pmra_error,\n        pmdec,\n        pmdec_error,\n        phot_g_mean_mag,\n        phot_bp_mean_mag,\n        phot_rp_mean_mag,\n        bp_rp,\n        ruwe\n    FROM gaiadr3.gaia_source\n    WHERE CONTAINS(\n        POINT('ICRS', ra, dec),\n        CIRCLE('ICRS', 86.405, 28.936, 0.03)\n    ) = 1\n    ORDER BY source_id",
+    "git": {
+      "commit": "b5f74cad41ef4da9acdc93e51828ffff28ac681a",
+      "tracked_files_dirty": false
+    },
+    "official_reference_adql": [
+      "SELECT\n            source_id,\n        original_ext_source_id,\n        angular_distance,\n        xm_flag,\n        allwise_oid,\n        number_of_neighbours,\n        number_of_mates\n        FROM gaiadr3.allwise_best_neighbour\n        WHERE source_id IN (3443397155195753728, 3443408768787304832, 3443408768787307648, 3443408841801502720, 3443408841803481216, 3443408841803927552, 3443408841803931008, 3443408871866532096, 3443408871866537472, 3443408871866538752, 3443408871866545664, 3443408871866546048, 3443408871869454080, 3443408876163665536, 3443408910520961920, 3443408940586027776, 3443408940586037248, 3443408944880704768, 3443408944881991168, 3443408944883136640, 3443408944883141760, 3443408944884184064, 3443408974945772544, 3443408974945774080, 3443408974945779456, 3443408974945780352, 3443408979240437632, 3443409009305503104, 3443409013600203136, 3443409013601469184, 3443409043665233408, 3443409043665233536, 3443409043665235200, 3443409043665241344, 3443409043665241984, 3443409043665250944, 3443409043665255040, 3443409047960903808, 3443409047961911552, 3443409112384727040, 3443409112384733312, 3443409112384738048, 3443409112384744192, 3443409116679413120, 3443409116681836544, 3443409146744461824, 3443409146744468864, 3443409146744479616, 3443409151040961152, 3443409181104217600, 3443409181104220288, 3443409181104232832, 3443409181104547200, 3443409185398864640, 3443409185400936832, 3443409185401300480, 3443409185401302400, 3443409215463956480, 3443409215463962496, 3443409215463963904, 3443409215463965952, 3443409215463966592, 3443409215463967488, 3443409219759593344, 3443409219759593984, 3443409249823714560, 3443409249823715328, 3443409249823715456, 3443409249823716224, 3443409249826575744, 3443409254119330944, 3443409254120177920, 3443409254120322048, 3443409254120776320, 3443409254120777984, 3443409254120778496, 3443409284183417472, 3443409284183427328, 3443409352902908544, 3443409352902915712, 3443409352905791360, 3443409357197549184, 3443409357197553280, 3443409357199395072, 3443409357199536256, 3443409357199988352, 3443409559061357440, 3443409563355984384, 3443409563357825024, 3443409627780844288)"
+    ],
+    "python_version": "3.12.10"
+  },
+  "generated_at_utc": "2026-08-28T18:05:49.699049+00:00",
+  "input_manifest": {
+    "allwise_content_sha256": "0e3199bb10ab0e92d07a932e764fb931d4305dfd0f1180c4a98e056317b45297",
+    "allwise_designations_sha256": "68673710412495f7f68379046aa093e1b3a6b444f3378b0be78df7039a2d8ede",
+    "allwise_rows_downloaded": 72,
+    "allwise_sources_in_prior_footprint": 70,
+    "candidate_pairs_content_sha256": "4106c788819af1c5ae87a568df505735e85a0fef2f81b02293eeb9e6f4e484aa",
+    "comparison_content_sha256": "7008ccd141102da995e016d735ee8b290b2c41880ad7b2c09811b9d38d45a7c5",
+    "gaia_content_sha256": "6f0cee57dcdc7acbef0fad29d3cb465edfd3f97998cbaed34f855c6237ccce52",
+    "gaia_matchable_sources": 90,
+    "gaia_query_limit_reached": false,
+    "gaia_rows_downloaded": 114,
+    "gaia_source_ids_sha256": "64c0b12edd5728beb3a441516d6d376b832c2b589c92a12725582f15e6d4dc1b",
+    "official_reference_content_sha256": "19debb0181678476389a61d4bca239551a86e3e4f9cf0e61aa1ef61c09f959e2",
+    "official_reference_rows": 47,
+    "selected_associations_content_sha256": "34959702f762823ee10f8456db8669b5a184e30a1dc96c82dc599ec441633131"
+  },
+  "interpretation": "Agreement with an external algorithm, not ground-truth accuracy.",
+  "metrics": {
+    "agreement_rate_on_clean_reference": 0.926829268292683,
+    "agreement_when_selected": 1.0,
+    "agreements": 38,
+    "allwise_sources": 72,
+    "candidate_coverage": 1.0,
+    "candidate_pairs": 56,
+    "clean_official_associations": 41,
+    "disagreements": 0,
+    "gaia_sources": 90,
+    "official_associations": 47,
+    "reference_candidate_not_selected": 3,
+    "reference_in_candidate_set": 41,
+    "reference_missing_from_candidates": 0,
+    "selected_associations": 38,
+    "selected_without_clean_reference": 0,
+    "selection_given_reference_candidate": 0.926829268292683
+  },
+  "prior": {
+    "allwise_sources": 70,
+    "common_footprint_radius_deg": 0.03,
+    "common_footprint_solid_angle_sr": 8.612854435181626e-07,
+    "effective_odds": 5.372591546713757e-10,
+    "gaia_sources": 90,
+    "model": "finite-footprint odds scaled by area/(4*pi) for all-sky Bayes factor"
+  },
+  "reference": {
+    "clean_subset": "xm_flag == 8 and number_of_neighbours == 1 and number_of_mates == 0",
+    "doi": "10.17876/gaia/dr.3/29",
+    "table": "gaiadr3.allwise_best_neighbour"
+  },
+  "sensitivity": [
+    {
+      "expected_match_fraction": 0.7,
+      "metrics": {
+        "agreement_rate_on_clean_reference": 0.975609756097561,
+        "agreement_when_selected": 1.0,
+        "agreements": 40,
+        "allwise_sources": 72,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 56,
+        "clean_official_associations": 41,
+        "disagreements": 0,
+        "gaia_sources": 90,
+        "official_associations": 47,
+        "reference_candidate_not_selected": 1,
+        "reference_in_candidate_set": 41,
+        "reference_missing_from_candidates": 0,
+        "selected_associations": 40,
+        "selected_without_clean_reference": 0,
+        "selection_given_reference_candidate": 0.975609756097561
+      },
+      "min_posterior": 0.1,
+      "prior_odds": 5.372591546713757e-10
+    }
+  ]
+}

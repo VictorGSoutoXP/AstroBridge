@@ -1,6 +1,6 @@
 # NASA submission path
 
-**Checked:** 2026-08-27
+**Checked:** 2026-08-28
 **Status:** planning document; no NASA program element has been selected and no submission is
 authorized by this repository.
 
@@ -15,6 +15,12 @@ by an eligible organization and its Authorized Organizational Representative (AO
   before proposal work starts.
 - The 2026 deadline announced for the ROSES-25 D.6 Astrophysics Research and Analysis Program
   (APRA) was 2026-08-06, so that opportunity is already closed as of this review.
+- ROSES-25 D.8 Habitable Worlds Observatory Precursor Science Investigations (HWO-PSI) is
+  currently open: its mandatory Notice of Intent is due 2026-09-10 and proposals are due
+  2026-10-26. NASA describes D.8 as advancing the scientific foundation and reducing risk for
+  a potential future HWO mission. No paragraph-by-paragraph scope mapping has established that
+  AstroBridge fits D.8, and the failed scientific gate below makes this a no-go for the current
+  cycle regardless of the open dates.
 - A newly posted opportunity is not automatically a fit. AstroBridge needs a program element
   whose science scope explicitly covers archival astrophysics, catalog methodology, or a
   relevant NASA mission-data objective.
@@ -48,7 +54,7 @@ Do not start a full NASA proposal until all gates in a row are satisfied.
 
 | Gate | Evidence required | Current state |
 |---|---|---|
-| Scientific claim | External association truth set plus held-out sky fields | No-go |
+| Scientific claim | Independently established high-confidence references, negative controls, and a passing held-out design | No-go; current held-out rule failed |
 | Calibration | Reliability curve, Brier score, density/magnitude strata, prior sensitivity | No-go |
 | Reproduction | Scripted data manifests, query timestamps, checksums, tables, and figures | No-go |
 | Archival record | Versioned release and DOI, including required inputs/configuration | No-go |
@@ -69,17 +75,22 @@ Do not start a full NASA proposal until all gates in a row are satisfied.
    workflow well before the deadline.
 7. Ask only scope or eligibility questions not answered by the solicitation, using the named
    program officer or SARA contact.
-8. Prepare an Open Science and Data Management Plan. Archive the release in a repository that
+8. If generative AI contributes to proposal text, cite its program name, version, date and
+   time of use, and how it was used in the references, as required by the current SARA FAQ.
+   The proposal team remains responsible for accuracy, authenticity, and research integrity.
+9. Prepare an Open Science and Data Management Plan. Archive the release in a repository that
    issues a DOI; GitHub alone is not the archival record.
-9. Release the proposal to the organization early enough for the AOR to submit it in NSPIRES.
-10. Preserve the submitted package, solicitation version, confirmations, and resulting review
+10. Release the proposal to the organization early enough for the AOR to submit it in NSPIRES.
+11. Preserve the submitted package, solicitation version, confirmations, and resulting review
     correspondence in the project's private records.
 
 ## Official sources
 
 - [NASA Science funding opportunities](https://science.nasa.gov/researchers/sara/grant-solicitations/)
+- [ROSES-25 D.8 HWO Precursor Science Investigations](https://science.nasa.gov/researchers/solicitations/roses-2025/d-8-habitable-worlds-observatory-precursor-science-investigations/)
 - [NSPIRES](https://nspires.nasaprs.com/)
 - [NASA SARA FAQ, including foreign-team guidance](https://science.nasa.gov/researchers/sara/faqs/#faq-14)
+- [NASA SARA FAQ on generative-AI disclosure](https://science.nasa.gov/researchers/sara/faqs/#faq-32)
 - [NSPIRES registration guide](https://science.nasa.gov/researchers/sara/how-to-guide/nspires-registration/)
 - [NSPIRES submission and AOR guide](https://science.nasa.gov/researchers/sara/how-to-guide/nspires-submission/)
 - [NASA unsolicited proposal guidance](https://www.nasa.gov/unsolicited-proposal-submission/)
