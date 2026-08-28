@@ -6,6 +6,78 @@ import pandas as pd
 from astropy.coordinates import SkyCoord, search_around_sky
 
 
+def _separation_from_center_deg(
+    catalog: pd.DataFrame,
+    center_ra_deg: float,
+    center_dec_deg: float,
+    *,
+    ra_col: str,
+    dec_col: str,
+) -> np.ndarray:
+    """Return center separations in degrees, preserving invalid rows as NaN."""
+
+    if not np.isfinite(center_ra_deg) or not 0.0 <= center_ra_deg < 360.0:
+        raise ValueError("center_ra_deg must be in the interval [0, 360)")
+    if not np.isfinite(center_dec_deg) or not -90.0 <= center_dec_deg <= 90.0:
+        raise ValueError("center_dec_deg must be in the interval [-90, 90]")
+    if ra_col not in catalog or dec_col not in catalog:
+        raise ValueError(f"catalog must contain {ra_col!r} and {dec_col!r}")
+
+    ra = pd.to_numeric(catalog[ra_col], errors="coerce").to_numpy(dtype=float)
+    dec = pd.to_numeric(catalog[dec_col], errors="coerce").to_numpy(dtype=float)
+    valid = np.isfinite(ra) & np.isfinite(dec) & (dec >= -90.0) & (dec <= 90.0)
+    separations = np.full(len(catalog), np.nan, dtype=float)
+    if valid.any():
+        center = SkyCoord(center_ra_deg * u.deg, center_dec_deg * u.deg, frame="icrs")
+        coordinates = SkyCoord(ra[valid] * u.deg, dec[valid] * u.deg, frame="icrs")
+        separations[valid] = center.separation(coordinates).deg
+    return separations
+
+
+def count_rows_within_cone(
+    catalog: pd.DataFrame,
+    center_ra_deg: float,
+    center_dec_deg: float,
+    radius_deg: float,
+    *,
+    ra_col: str = "ra",
+    dec_col: str = "dec",
+) -> int:
+    """Count finite catalog coordinates inside a spherical cone."""
+
+    if not np.isfinite(radius_deg) or not 0.0 < radius_deg <= 180.0:
+        raise ValueError("radius_deg must be in the interval (0, 180]")
+    separations = _separation_from_center_deg(
+        catalog,
+        center_ra_deg,
+        center_dec_deg,
+        ra_col=ra_col,
+        dec_col=dec_col,
+    )
+    return int(np.count_nonzero(separations <= radius_deg))
+
+
+def maximum_radius_from_center_deg(
+    catalog: pd.DataFrame,
+    center_ra_deg: float,
+    center_dec_deg: float,
+    *,
+    ra_col: str = "ra",
+    dec_col: str = "dec",
+) -> float:
+    """Return the largest finite catalog separation from a field center."""
+
+    separations = _separation_from_center_deg(
+        catalog,
+        center_ra_deg,
+        center_dec_deg,
+        ra_col=ra_col,
+        dec_col=dec_col,
+    )
+    finite = separations[np.isfinite(separations)]
+    return float(finite.max()) if finite.size else 0.0
+
+
 def propagate_gaia_position(
     gaia_df: pd.DataFrame,
     from_epoch: float = 2016.0,

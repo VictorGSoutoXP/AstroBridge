@@ -43,9 +43,10 @@ def resolve_unique_matches(
 
     The bipartite candidate graph is split into connected components, keeping
     memory proportional to local ambiguity rather than total catalog size.
-    Each left source receives a private dummy column whose score is
-    ``min_score``; a real candidate must meet or exceed that decision threshold
-    to be selected.
+    Each real edge has utility ``logit(score) - logit(min_score)`` and each
+    left source receives a private zero-utility dummy. This maximizes joint
+    match odds while making ``min_score`` the match-versus-unmatched decision
+    boundary. A real candidate must meet or exceed that threshold.
     """
 
     required = {"left_index", "right_index", score_col}
@@ -58,6 +59,9 @@ def resolve_unique_matches(
         return candidates.copy()
 
     scores = pd.to_numeric(candidates[score_col], errors="coerce")
+    finite_scores = scores[np.isfinite(scores)]
+    if ((finite_scores < 0.0) | (finite_scores > 1.0)).any():
+        raise ValueError(f"{score_col} must contain probabilities between zero and one")
     eligible = candidates.loc[np.isfinite(scores) & (scores >= min_score)].copy()
     if eligible.empty:
         return eligible.reset_index(drop=True)
@@ -111,10 +115,14 @@ def resolve_unique_matches(
             left = int(row["left_index"])
             right = int(row["right_index"])
             score = float(row[score_col])
-            cost[left_row[left], right_col[right]] = -np.log(np.clip(score, 1e-300, 1.0))
+            clipped_score = np.clip(score, np.finfo(float).eps, 1.0 - np.finfo(float).eps)
+            score_log_odds = np.log(clipped_score) - np.log1p(-clipped_score)
+            threshold_log_odds = np.log(min_score) - np.log1p(-min_score)
+            utility = score_log_odds - threshold_log_odds
+            cost[left_row[left], right_col[right]] = -utility
             pair_to_row[(left, right)] = int(row_index)
 
-        unmatched_cost = -np.log(min_score) + 1e-12
+        unmatched_cost = 1e-12
         for index in range(len(left_nodes)):
             cost[index, len(right_nodes) + index] = unmatched_cost
 

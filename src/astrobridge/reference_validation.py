@@ -21,14 +21,14 @@ class ReferenceAgreementMetrics:
     reference_missing_from_candidates: int
     agreements: int
     disagreements: int
-    reference_not_selected: int
+    reference_candidate_not_selected: int
     selected_without_clean_reference: int
-    candidate_coverage: float
-    agreement_rate_on_clean_reference: float
-    agreement_when_selected: float
-    selection_given_reference_candidate: float
+    candidate_coverage: float | None
+    agreement_rate_on_clean_reference: float | None
+    agreement_when_selected: float | None
+    selection_given_reference_candidate: float | None
 
-    def to_dict(self) -> dict[str, float | int]:
+    def to_dict(self) -> dict[str, float | int | None]:
         return asdict(self)
 
 
@@ -61,8 +61,8 @@ def clean_gaia_allwise_reference(reference: pd.DataFrame) -> pd.DataFrame:
     return clean.drop_duplicates("source_id", keep="first").reset_index(drop=True)
 
 
-def _safe_ratio(numerator: int, denominator: int) -> float:
-    return float(numerator / denominator) if denominator else 0.0
+def _safe_ratio(numerator: int, denominator: int) -> float | None:
+    return float(numerator / denominator) if denominator else None
 
 
 def gaia_allwise_reference_comparison(
@@ -225,7 +225,9 @@ def evaluate_gaia_allwise_reference(
         source_id in selected_by_source and selected_by_source[source_id] != designation
         for source_id, designation in reference_pairs
     )
-    not_selected = len(reference_pairs) - agreements - disagreements
+    candidate_not_selected = sum(
+        pair in candidate_pairs and pair[0] not in selected_by_source for pair in reference_pairs
+    )
     selected_without_reference = sum(
         source_id not in reference_by_source for source_id in selected_by_source
     )
@@ -242,7 +244,7 @@ def evaluate_gaia_allwise_reference(
         reference_missing_from_candidates=len(reference_pairs) - reference_in_candidates,
         agreements=agreements,
         disagreements=disagreements,
-        reference_not_selected=not_selected,
+        reference_candidate_not_selected=candidate_not_selected,
         selected_without_clean_reference=selected_without_reference,
         candidate_coverage=_safe_ratio(reference_in_candidates, len(reference_pairs)),
         agreement_rate_on_clean_reference=_safe_ratio(agreements, len(reference_pairs)),

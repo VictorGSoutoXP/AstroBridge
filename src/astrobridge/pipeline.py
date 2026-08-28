@@ -4,11 +4,13 @@ import argparse
 from pathlib import Path
 
 from astrobridge.astrometry import (
+    count_rows_within_cone,
     crossmatch_nearest,
     effective_circular_sigma_arcsec,
+    maximum_radius_from_center_deg,
     propagate_gaia_position,
 )
-from astrobridge.bayes import cone_solid_angle_sr
+from astrobridge.bayes import catalog_prior_odds, cone_solid_angle_sr
 from astrobridge.data import fetch_allwise, fetch_gaia_dr3
 from astrobridge.matching import probabilistic_crossmatch
 from astrobridge.plots import plot_cmd, plot_distance_distribution
@@ -51,13 +53,31 @@ def run_pipeline(
     output_path = Path(out)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    wise_radius = expanded_catalog_radius_deg(radius, threshold_arcsec)
     gaia = fetch_gaia_dr3(ra=ra, dec=dec, radius=radius, limit=gaia_limit)
-    wise = fetch_allwise(ra=ra, dec=dec, radius=wise_radius)
-
     gaia_epoch = propagate_gaia_position(gaia, from_epoch=2016.0, to_epoch=2010.5)
     gaia_with_motion = gaia_epoch.loc[gaia_epoch["proper_motion_available"]].reset_index(drop=True)
+
+    propagated_radius = maximum_radius_from_center_deg(
+        gaia_with_motion,
+        ra,
+        dec,
+        ra_col="ra_epoch",
+        dec_col="dec_epoch",
+    )
+    wise_radius = expanded_catalog_radius_deg(max(radius, propagated_radius), threshold_arcsec)
+    wise = fetch_allwise(ra=ra, dec=dec, radius=wise_radius)
     wise_sigma = effective_circular_sigma_arcsec(wise["sigra"], wise["sigdec"])
+    wise_prior_count = count_rows_within_cone(wise, ra, dec, radius)
+    prior_odds = (
+        catalog_prior_odds(
+            len(gaia_with_motion),
+            wise_prior_count,
+            cone_solid_angle_sr(radius),
+            expected_match_fraction=expected_match_fraction,
+        )
+        if len(gaia_with_motion) and wise_prior_count
+        else 0.0
+    )
 
     matches_raw = crossmatch_nearest(
         left_df=gaia,
@@ -76,8 +96,7 @@ def run_pipeline(
         left_dec="dec_epoch",
         candidate_radius_arcsec=threshold_arcsec,
         min_posterior=min_posterior,
-        area_solid_angle_sr=cone_solid_angle_sr(wise_radius),
-        expected_match_fraction=expected_match_fraction,
+        prior_odds=prior_odds,
     )
     matches_pm = match_result.matches
 

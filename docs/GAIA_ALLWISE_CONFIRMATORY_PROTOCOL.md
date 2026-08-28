@@ -1,7 +1,26 @@
 # Confirmatory Gaia DR3-AllWISE agreement protocol
 
-**Status:** frozen before querying the confirmatory fields. The Git commit first containing
-this document is the registration boundary.
+**Status:** prospectively specified before querying the confirmatory fields. Commit `ca080e7`
+is the original internal registration boundary; it was not a public, independent
+preregistration.
+
+## Corrective amendment before the valid run
+
+Three fields were executed after `ca080e7`, but a subsequent code review found two
+implementation defects: the finite-footprint prior omitted the `1/(4*pi)` normalization
+required with the analytic all-sky Bayes factor, and the one-to-one solver optimized products
+of binary probabilities instead of joint odds. Those outputs are invalidated and excluded
+from every result. Two additional audit findings are corrected at the same boundary:
+
+- Gaia queries retrieve `limit + 1` rows with deterministic `source_id` ordering so
+  truncation is detected rather than guessed.
+- The AllWISE query encloses every retained Gaia position after epoch propagation plus the
+  candidate radius. Density counts for the prior still use the original common field cone.
+
+The field list, primary threshold, secondary threshold, expected association fraction, clean
+official subset, exclusions, and decision rule below were not selected from corrected
+outcomes. The corrective commit immediately preceding the valid queries is the amended
+internal registration boundary and must be identified in the results report.
 
 ## Purpose
 
@@ -15,12 +34,17 @@ all confirmatory totals.
 ## Frozen primary configuration
 
 - Gaia cone: field-specific radius below.
-- AllWISE cone: Gaia radius plus 2 arcsec.
+- AllWISE cone: the larger of the original Gaia radius and the maximum radius of a retained
+  Gaia source after epoch propagation, plus 2 arcsec.
 - Gaia epoch propagation: J2016.0 to nominal J2010.5.
 - Gaia inclusion: both proper-motion components available.
 - Candidate radius: 2.0 arcsec.
 - Expected match fraction: 0.7.
+- Prior: finite-footprint association odds from Gaia and AllWISE counts inside the same
+  original field cone, scaled by `area / (4*pi)` for the analytic all-sky Bayes factor.
 - Minimum posterior: 0.5.
+- One-to-one assignment: maximize the sum of binary log-odds relative to the posterior
+  threshold, with an explicit unmatched option.
 - Gaia query limit: 5,000 rows per field.
 - Official clean subset: `xm_flag == 8`, `number_of_neighbours == 1`, and
   `number_of_mates == 0`.
@@ -59,8 +83,10 @@ Report field-level and aggregate counts for:
 6. AstroBridge selections outside the clean official subset.
 
 Primary rates are candidate coverage and same-counterpart agreement divided by clean official
-associations. Report Wilson 95% intervals for the aggregate proportions. Do not call these
-precision, recall, or accuracy.
+associations. Report Wilson 95% intervals for the aggregate proportions. These are
+descriptive per-source intervals: spatial clustering and one-to-one assignment violate strict
+independence, and dense fields can dominate the aggregate. Also report the per-field range and
+macro average. Do not call these precision, recall, accuracy, or all-sky performance.
 
 ## Secondary analysis
 
@@ -86,5 +112,7 @@ This small confirmatory study succeeds as an engineering comparator if:
   least 0.90; and
 - every different-counterpart selection is inspected and reported.
 
-Passing this rule does not satisfy the external-truth requirement. The independent
-NWAY/XMM-COSMOS or equivalent truth benchmark remains mandatory.
+Passing this rule does not satisfy independent scientific validation. A published benchmark
+with independently established, high-confidence counterparts, such as a carefully audited
+NWAY/XMM-COSMOS dataset, remains mandatory; it must not be called truth without documenting
+how its reference labels were established.

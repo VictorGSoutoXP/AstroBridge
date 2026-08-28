@@ -77,12 +77,16 @@ def catalog_prior_odds(
     area_solid_angle_sr: float,
     expected_match_fraction: float = 0.7,
 ) -> float:
-    """Estimate association prior odds from catalog density and expected matches.
+    """Estimate association prior odds for the analytic all-sky Bayes factor.
 
-    The density prior probability is ``N_match * area / (N_left * N_right)``,
-    following the finite-footprint treatment in Budavári & Szalay (2008). It is
-    converted to odds exactly. Scientific analyses should report a sensitivity
-    study over ``expected_match_fraction``.
+    ``N_match / (N_left * N_right)`` is the association probability inside a
+    common finite footprint (Budavári & Szalay 2008, equation 25). Equation 16
+    is instead the analytic all-sky Bayes factor, so equation 28 requires its
+    prior odds to be scaled by the footprint fraction ``area / (4*pi)``. The
+    catalog counts must therefore describe that same footprint.
+
+    Scientific analyses should report sensitivity to
+    ``expected_match_fraction``.
     """
 
     if n_left <= 0 or n_right <= 0:
@@ -93,7 +97,9 @@ def catalog_prior_odds(
         raise ValueError("expected_match_fraction must be between zero and one")
 
     expected_matches = expected_match_fraction * min(n_left, n_right)
-    prior_probability = expected_matches * area_solid_angle_sr / (n_left * n_right)
-    if prior_probability >= 1.0:
+    footprint_probability = expected_matches / (n_left * n_right)
+    if footprint_probability >= 1.0:
         raise ValueError("density prior must be below one; revise the catalog footprint")
-    return float(prior_probability / (1.0 - prior_probability))
+    footprint_odds = footprint_probability / (1.0 - footprint_probability)
+    footprint_fraction = area_solid_angle_sr / (4.0 * np.pi)
+    return float(footprint_fraction * footprint_odds)
