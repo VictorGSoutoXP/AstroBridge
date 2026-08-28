@@ -48,6 +48,7 @@ Issues = "https://github.com/VictorGSoutoXP/AstroBridge/issues"
 [project.scripts]
 astrobridge = "astrobridge.pipeline:main"
 astrobridge-validate = "astrobridge.validation_cli:main"
+astrobridge-reference-validate = "astrobridge.reference_cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

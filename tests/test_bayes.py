@@ -5,7 +5,6 @@ from astrobridge.bayes import (
     ARCSEC_TO_RAD,
     budavari_szalay_bayes_factor,
     catalog_prior_odds,
-    cone_solid_angle_sr,
     posterior_from_bayes_factor,
 )
 
@@ -44,7 +43,13 @@ def test_posterior_rejects_nonfinite_prior_odds():
 
 
 def test_catalog_prior_odds_matches_density_expression():
-    area = cone_solid_angle_sr(0.3)
-    odds = catalog_prior_odds(100, 80, area, expected_match_fraction=0.5)
-    probability = 40 * area / (100 * 80)
-    assert odds == pytest.approx(probability / (1 - probability))
+    full_sky = 4.0 * np.pi
+    odds = catalog_prior_odds(100, 80, full_sky, expected_match_fraction=0.5)
+    footprint_probability = 40 / (100 * 80)
+    assert odds == pytest.approx(footprint_probability / (1 - footprint_probability))
+
+
+def test_catalog_prior_odds_scales_all_sky_bayes_factor_by_footprint_fraction():
+    full_sky_odds = catalog_prior_odds(100, 80, 4.0 * np.pi, expected_match_fraction=0.5)
+    half_sky_odds = catalog_prior_odds(100, 80, 2.0 * np.pi, expected_match_fraction=0.5)
+    assert half_sky_odds == pytest.approx(0.5 * full_sky_odds)

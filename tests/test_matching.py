@@ -1,4 +1,5 @@
 import pandas as pd
+import pytest
 
 from astrobridge.matching import probabilistic_crossmatch, resolve_unique_matches
 
@@ -23,6 +24,30 @@ def test_unique_resolution_uses_alternative_candidate_for_global_solution():
 def test_unique_resolution_can_leave_source_unmatched():
     candidates = pd.DataFrame({"left_index": [0], "right_index": [0], "posterior_match": [0.49]})
     assert resolve_unique_matches(candidates, min_score=0.5).empty
+
+
+def test_unique_resolution_maximizes_joint_odds_not_probability_product():
+    candidates = pd.DataFrame(
+        {
+            "left_index": [0, 0, 1, 1],
+            "right_index": [0, 1, 0, 1],
+            "posterior_match": [0.99, 0.80, 0.80, 0.60],
+        }
+    )
+
+    selected = resolve_unique_matches(candidates, min_score=0.5)
+
+    assert set(zip(selected["left_index"], selected["right_index"], strict=True)) == {
+        (0, 0),
+        (1, 1),
+    }
+
+
+def test_unique_resolution_rejects_scores_outside_probability_range():
+    candidates = pd.DataFrame({"left_index": [0], "right_index": [0], "posterior_match": [1.01]})
+
+    with pytest.raises(ValueError, match="between zero and one"):
+        resolve_unique_matches(candidates)
 
 
 def test_probabilistic_crossmatch_scores_all_nearby_pairs_and_is_unique():

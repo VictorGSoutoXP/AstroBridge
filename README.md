@@ -23,14 +23,18 @@ exploratory notebook work.
   than treating missing motion as a precise zero.
 - Generate **every** candidate pair inside a configurable angular radius.
 - Compute the Budavári-Szalay positional Bayes factor after converting arcseconds to radians.
-- Estimate explicit prior odds from field density and an expected association fraction.
-- Resolve one-to-one associations with the Hungarian algorithm on local connected components.
+- Estimate explicit finite-footprint prior odds, normalized for the analytic all-sky Bayes
+  factor, from field density and an expected association fraction.
+- Resolve one-to-one associations by maximizing threshold-relative log-odds with the Hungarian
+  algorithm on local connected components.
 - Allow a source to remain unmatched when no candidate reaches the posterior threshold.
 - Optionally label selected sources through SIMBAD.
 
-The package currently assumes independent circularized Gaussian errors and uses 2010.5 as a
-single nominal AllWISE epoch. Per-source observation epochs, full Gaia covariance, photometric
-priors, selection functions, and calibrated novelty detection are roadmap items.
+The pair scores are binary match-versus-nonmatch posteriors; they are not calibrated marginal
+probabilities across mutually exclusive candidates. The package currently assumes independent
+circularized Gaussian errors and uses 2010.5 as a single nominal AllWISE epoch. Per-source
+observation epochs, parallax displacement, full Gaia covariance, photometric priors, selection
+functions, and calibrated novelty detection are roadmap items.
 
 ## Validation boundaries
 
@@ -42,8 +46,8 @@ true pairs and 40 contaminants in each catalog it produced:
 | Field radius | Candidate pairs | Precision | Recall | F1 |
 |---:|---:|---:|---:|---:|
 | 0.20 deg | 200 | 1.000 | 1.000 | 1.000 |
-| 0.02 deg | 246 | 0.990 | 0.990 | 0.990 |
-| 0.01 deg | 376 | 0.941 | 0.950 | 0.945 |
+| 0.02 deg | 246 | 0.995 | 0.985 | 0.990 |
+| 0.01 deg | 376 | 0.953 | 0.920 | 0.936 |
 
 See [`reports/SYNTHETIC_VALIDATION.md`](reports/SYNTHETIC_VALIDATION.md) for configuration,
 limitations, and reproduction commands. These results validate software behavior under the
@@ -63,6 +67,27 @@ Gaia-AllWISE associations:
 The corrected interpretation is documented in
 [`reports/VALIDATION_REPORT.md`](reports/VALIDATION_REPORT.md). The notebook remains useful as
 an exploratory membership diagnostic, not as cross-match ground truth.
+
+### Official Gaia DR3-AllWISE algorithm comparison
+
+An internally specified ten-field comparison, with three pre-fix executions explicitly
+invalidated and all ten fields run from the corrected `b5f74ca` boundary, found all 209
+least-ambiguous official associations inside the AstroBridge candidate sets. At the primary
+0.5 threshold, AstroBridge selected the same counterpart for 178, selected no different
+counterpart, and left 31 official candidates unselected. Agreement was 85.2% with a
+descriptive Wilson 95% interval of
+79.7%--89.3%; the frozen engineering rule required its lower bound to be at least 90%, so the
+study **failed** that criterion. Agreement varied from 60.0% to 100.0% across the nine fields
+with a defined rate.
+
+This establishes complete candidate coverage for the strict positive subset and exposes a
+field-dependent selection problem. Source density is a plausible contributor that still
+requires a pre-specified stratified test. This study does not measure precision,
+false-positive rate, calibration, or ground-truth accuracy. See
+[`reports/GAIA_ALLWISE_CONFIRMATORY_RESULTS.md`](reports/GAIA_ALLWISE_CONFIRMATORY_RESULTS.md)
+and the frozen/amended
+[`docs/GAIA_ALLWISE_CONFIRMATORY_PROTOCOL.md`](docs/GAIA_ALLWISE_CONFIRMATORY_PROTOCOL.md).
+The earlier exploratory table is retained as an explicitly invalidated historical artifact.
 
 ## Installation
 
@@ -112,6 +137,8 @@ ruff format src tests scripts --check
 pytest tests/
 
 astrobridge-validate --field-radius-deg 0.02
+
+astrobridge-reference-validate --ra 119.5 --dec -60.83 --radius 0.05
 ```
 
 All automated tests are deterministic and make no network requests. Live service checks belong
@@ -151,10 +178,13 @@ AstroBridge/
 - [x] **Association engine:** multi-candidate search, positional Bayes factor, density prior,
   one-to-one resolution, and unmatched option.
 - [x] **Deterministic validation:** unit tests and known-truth synthetic density stress test.
+- [x] **External algorithm comparison:** internally specified held-out field study, rerun from
+  a corrective boundary against the official Gaia DR3-AllWISE best-neighbour table; its
+  primary decision rule failed.
 - [ ] **External association benchmark:** reproduce NWAY on XMM-COSMOS or another published
-  truth set.
-- [ ] **Held-out sky validation:** evaluate multiple clusters/fields and the official Gaia
-  DR2-DR3 neighborhood mapping.
+  reference with independently established, high-confidence counterparts.
+- [ ] **Additional held-out validation:** add a negative/control class, ambiguous-neighbour
+  strata, and the official Gaia DR2-DR3 neighborhood mapping.
 - [ ] **Calibration:** reliability curves, Brier score, expected calibration error, and prior
   sensitivity.
 - [ ] **Astrometric model:** full covariance propagation, blending diagnostics, and selection

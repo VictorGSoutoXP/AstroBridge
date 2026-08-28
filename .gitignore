@@ -24,6 +24,8 @@ data/processed/*
 reports/figures/*
 !reports/figures/.gitkeep
 *.csv
+!reports/benchmark_data/*.csv
+!reports/benchmark_data/**/*.csv
 *.parquet
 *.fits
 *.fits.gz

@@ -8,9 +8,13 @@ affiliation, or funding.
 - [x] Separate association validation from downstream cluster-membership validation.
 - [x] Include a deterministic benchmark with known true associations.
 - [x] Report failure under increasing source density.
-- [ ] Validate against an external, published association benchmark such as NWAY/XMM-COSMOS.
-- [ ] Evaluate held-out sky fields and report results by magnitude, density, separation,
-  proper motion, and quality flag.
+- [x] Run an internally specified held-out Gaia-AllWISE field comparison, invalidate the three
+  pre-fix executions, rerun all fields from the corrected boundary, and report the failed
+  primary decision rule.
+- [ ] Validate against a published benchmark with independently established,
+  high-confidence counterparts, such as an audited NWAY/XMM-COSMOS dataset.
+- [ ] Add a reliable negative/control class and ambiguous-neighbour strata.
+- [ ] Report results by magnitude, density, separation, proper motion, and quality flag.
 - [ ] Propagate the full Gaia astrometric covariance matrix.
 - [ ] Replace the single nominal AllWISE epoch with per-source observation epochs where
   available.
@@ -23,10 +27,13 @@ affiliation, or funding.
 - [x] Keep deterministic unit and synthetic tests offline.
 - [x] Make lint failures block continuous integration.
 - [x] Provide command-line entry points for the pipeline and synthetic validation.
+- [x] Record code commit, tracked-file state, dependency versions, query text,
+  artifact-generation timestamp, effective prior, retry count, and content hashes for the
+  held-out field run.
 - [ ] Pin a complete computational environment and record operating-system details.
 - [ ] Archive immutable input manifests, query text, retrieval timestamps, and checksums.
-- [ ] Execute the real-sky workflow from scripts without hidden notebook state.
-- [ ] Publish generated tables and figures needed to verify manuscript claims.
+- [x] Execute and aggregate the real-sky field workflow without hidden notebook state.
+- [x] Publish the field tables and machine-readable aggregate needed to verify current claims.
 
 ## Open science and governance
 
@@ -46,8 +53,8 @@ affiliation, or funding.
 - [ ] Obtain domain review from an astronomer experienced in catalog cross-identification.
 
 The current route assessment and eligibility constraints are documented in
-[`NASA_SUBMISSION_PATH.md`](NASA_SUBMISSION_PATH.md). A deliberately uncommitted scientific
-draft is in [`NASA_CONCEPT_NOTE.md`](NASA_CONCEPT_NOTE.md); its solicitation-mapping fields
+[`NASA_SUBMISSION_PATH.md`](NASA_SUBMISSION_PATH.md). An internal, unsubmitted scientific draft
+is in [`NASA_CONCEPT_NOTE.md`](NASA_CONCEPT_NOTE.md); its solicitation-mapping fields
 must remain blank until a live, eligible program element is selected.
 
 Official starting points:

@@ -4,7 +4,9 @@ import pytest
 
 from astrobridge.astrometry import (
     candidate_pairs_within_radius,
+    count_rows_within_cone,
     effective_circular_sigma_arcsec,
+    maximum_radius_from_center_deg,
     propagate_gaia_position,
 )
 
@@ -55,3 +57,10 @@ def test_effective_circular_sigma_uses_default_for_invalid_values():
     )
     assert result[0] == pytest.approx(np.sqrt((0.1**2 + 0.3**2) / 2.0))
     assert result[1] == pytest.approx(0.5)
+
+
+def test_cone_helpers_handle_ra_wrap_and_invalid_coordinates():
+    catalog = pd.DataFrame({"ra": [0.001, 0.010, np.nan], "dec": [0.0, 0.0, 0.0]})
+
+    assert count_rows_within_cone(catalog, 359.999, 0.0, 0.003) == 1
+    assert maximum_radius_from_center_deg(catalog, 359.999, 0.0) == pytest.approx(0.011)

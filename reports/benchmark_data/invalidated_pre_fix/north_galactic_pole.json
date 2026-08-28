@@ -1,0 +1,68 @@
+{
+  "astrobridge_version": "0.2.0.dev0",
+  "configuration": {
+    "allwise_radius_deg": 0.050555555555555555,
+    "candidate_radius_arcsec": 2.0,
+    "dec_deg": 27.1283,
+    "expected_match_fraction": 0.7,
+    "gaia_limit": 5000,
+    "gaia_radius_deg": 0.05,
+    "min_posterior": 0.5,
+    "ra_deg": 192.8595
+  },
+  "generated_at_utc": "2026-08-27T21:12:57.344323+00:00",
+  "input_manifest": {
+    "allwise_designations_sha256": "70c2d42f26e9071bc3432e997b9c041e1a5e61f5607a09273e8836306ae46786",
+    "gaia_query_limit_reached": false,
+    "gaia_source_ids_sha256": "f70fdca646a479aa3dcef70d950ca37dd784c5735c4027047e260473188c2d39",
+    "official_reference_rows": 15
+  },
+  "interpretation": "Agreement with an external algorithm, not ground-truth accuracy.",
+  "metrics": {
+    "agreement_rate_on_clean_reference": 1.0,
+    "agreement_when_selected": 1.0,
+    "agreements": 13,
+    "allwise_sources": 115,
+    "candidate_coverage": 1.0,
+    "candidate_pairs": 16,
+    "clean_official_associations": 13,
+    "disagreements": 0,
+    "gaia_sources": 20,
+    "official_associations": 15,
+    "reference_in_candidate_set": 13,
+    "reference_missing_from_candidates": 0,
+    "reference_not_selected": 0,
+    "selected_associations": 14,
+    "selected_without_clean_reference": 1,
+    "selection_given_reference_candidate": 1.0
+  },
+  "reference": {
+    "clean_subset": "xm_flag == 8 and number_of_neighbours == 1 and number_of_mates == 0",
+    "doi": "10.17876/gaia/dr.3/29",
+    "table": "gaiadr3.allwise_best_neighbour"
+  },
+  "sensitivity": [
+    {
+      "expected_match_fraction": 0.7,
+      "metrics": {
+        "agreement_rate_on_clean_reference": 1.0,
+        "agreement_when_selected": 1.0,
+        "agreements": 13,
+        "allwise_sources": 115,
+        "candidate_coverage": 1.0,
+        "candidate_pairs": 16,
+        "clean_official_associations": 13,
+        "disagreements": 0,
+        "gaia_sources": 20,
+        "official_associations": 15,
+        "reference_in_candidate_set": 13,
+        "reference_missing_from_candidates": 0,
+        "reference_not_selected": 0,
+        "selected_associations": 14,
+        "selected_without_clean_reference": 1,
+        "selection_given_reference_candidate": 1.0
+      },
+      "min_posterior": 0.1
+    }
+  ]
+}

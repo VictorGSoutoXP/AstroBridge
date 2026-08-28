@@ -1,0 +1,18 @@
+{
+  "candidate_pairs": 376,
+  "candidate_radius_arcsec": 2.0,
+  "correct_associations": 184,
+  "f1": 0.9363867684478372,
+  "field_radius_deg": 0.01,
+  "incorrect_associations": 9,
+  "left_sources": 240,
+  "min_posterior": 0.5,
+  "missed_associations": 16,
+  "precision": 0.9533678756476683,
+  "prior_odds": 2.6534618288904246e-11,
+  "recall": 0.92,
+  "right_sources": 240,
+  "seed": 42,
+  "selected_associations": 193,
+  "true_associations": 200
+}
