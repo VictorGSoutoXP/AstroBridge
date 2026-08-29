@@ -820,19 +820,21 @@ def run(raw_dir: Path, output_dir: Path) -> dict[str, Any]:
     }
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    cases.sort_values("case_id").to_csv(output_dir / "cases.csv", index=False)
+    cases.sort_values("case_id").to_csv(output_dir / "cases.csv", index=False, lineterminator="\n")
     reference.truth_pairs.sort_values(["case_id", "right_id"]).to_csv(
-        output_dir / "truth_pairs.csv", index=False
+        output_dir / "truth_pairs.csv", index=False, lineterminator="\n"
     )
     reference.label_links.sort_values(["chandra_index", "right_id"]).to_csv(
-        output_dir / "label_links.csv", index=False
+        output_dir / "label_links.csv", index=False, lineterminator="\n"
     )
     candidates.sort_values(["left_index", "distance_arcsec", "right_index"]).to_csv(
-        output_dir / "predicted_candidates.csv", index=False
+        output_dir / "predicted_candidates.csv", index=False, lineterminator="\n"
     )
-    controls.sort_values("parent_case_id").to_csv(output_dir / "shifted_controls.csv", index=False)
+    controls.sort_values("parent_case_id").to_csv(
+        output_dir / "shifted_controls.csv", index=False, lineterminator="\n"
+    )
     control_candidates.sort_values(["left_index", "distance_arcsec", "right_index"]).to_csv(
-        output_dir / "shifted_control_candidates.csv", index=False
+        output_dir / "shifted_control_candidates.csv", index=False, lineterminator="\n"
     )
     (output_dir / "metrics.json").write_text(
         json.dumps(metrics, indent=2, sort_keys=True, default=_json_default),
