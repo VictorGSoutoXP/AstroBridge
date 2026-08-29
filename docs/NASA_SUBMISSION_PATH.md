@@ -1,6 +1,8 @@
 # NASA submission path
 
-**Checked:** 2026-08-28
+**External opportunity check:** 2026-08-28
+
+**Scientific gate update:** 2026-08-29
 **Status:** planning document; no NASA program element has been selected and no submission is
 authorized by this repository.
 
@@ -54,9 +56,9 @@ Do not start a full NASA proposal until all gates in a row are satisfied.
 
 | Gate | Evidence required | Current state |
 |---|---|---|
-| Scientific claim | Independently established high-confidence references, negative controls, and a passing held-out design | No-go; current held-out rule failed |
-| Calibration | Reliability curve, Brier score, density/magnitude strata, prior sensitivity | No-go |
-| Reproduction | Scripted data manifests, query timestamps, checksums, tables, and figures | No-go |
+| Scientific claim | Independently established high-confidence references, real negative cases, and a passing held-out design | No-go; XMM-COSMOS candidate coverage/ranking were strong, but recall and shifted-control gates failed |
+| Calibration | Normalized source-level probabilities, reliability, Brier score, strata, and prior sensitivity | No-go; pairwise intercept calibration improved recall but worsened shifted-control selection |
+| Reproduction | Scripted data manifests, timestamps, checksums, tables, figures, and a pinned environment | Partial; XMM-COSMOS tables/metrics reproduced byte for byte, but the environment is not fully locked and figures are pending |
 | Archival record | Versioned release and DOI, including required inputs/configuration | No-go |
 | Program fit | Named live program element and paragraph-by-paragraph scope mapping | No-go |
 | Eligibility | Eligible submitting organization, PI/AOR, and confirmed foreign role | No-go |

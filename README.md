@@ -10,9 +10,10 @@ cross-identification in astronomical catalogs. The current development version f
 Gaia DR3 and AllWISE positional association; TESS inspection and novelty detection remain
 exploratory notebook work.
 
-> **Scientific status:** the association engine has deterministic unit tests and a synthetic
-> benchmark with known truth. Independent real-sky association validation is still pending.
-> The project must not yet be described as NASA-validated or publication-ready.
+> **Scientific status:** an independent Chandra-anchored XMM-COSMOS--IRAC benchmark confirmed
+> complete candidate generation and strong ranking, but the frozen decision rule failed on
+> recall and shifted controls. The project must not be described as NASA-validated,
+> source-level calibrated, or publication-ready.
 
 ## Implemented in the package
 
@@ -88,6 +89,24 @@ false-positive rate, calibration, or ground-truth accuracy. See
 and the frozen/amended
 [`docs/GAIA_ALLWISE_CONFIRMATORY_PROTOCOL.md`](docs/GAIA_ALLWISE_CONFIRMATORY_PROTOCOL.md).
 The earlier exploratory table is retained as an explicitly invalidated historical artifact.
+
+### Chandra-anchored XMM-COSMOS--IRAC benchmark
+
+A prospectively specified independent benchmark used XMM positions as inputs and secure IRAC
+counterparts established from higher-resolution Chandra COSMOS-Legacy sources as references.
+After excluding incomplete one-to-one components, the untouched test split contained 1,050
+strict references. AstroBridge generated all 1,050 truth candidates and ranked 1,003 first.
+At the frozen 0.5 threshold it made 922 correct selections, 28 wrong selections, and 100
+abstentions: precision was 97.05%, recall 87.81%, and F1 92.20%.
+
+The primary engineering rule **failed** because recall was below 95% and 156 of 853 shifted
+pseudo-negative controls received a selection (18.29%, versus a maximum of 5%). A pre-declared
+intercept-only calibration raised recall to 93.14% but worsened control selection to 30.72%.
+This supports the candidate generator and positional ranking in COSMOS while rejecting the
+current binary pair posterior as a sufficient source-level decision probability. See the
+[`results report`](reports/XMM_COSMOS_BENCHMARK_RESULTS.md), frozen
+[`protocol`](docs/XMM_COSMOS_BENCHMARK_PROTOCOL.md), and machine-readable
+[`artifacts`](reports/benchmark_data/xmm_cosmos_v1/).
 
 ## Installation
 
@@ -181,12 +200,16 @@ AstroBridge/
 - [x] **External algorithm comparison:** internally specified held-out field study, rerun from
   a corrective boundary against the official Gaia DR3-AllWISE best-neighbour table; its
   primary decision rule failed.
-- [ ] **External association benchmark:** reproduce NWAY on XMM-COSMOS or another published
-  reference with independently established, high-confidence counterparts.
-- [ ] **Additional held-out validation:** add a negative/control class, ambiguous-neighbour
-  strata, and the official Gaia DR2-DR3 neighborhood mapping.
-- [ ] **Calibration:** reliability curves, Brier score, expected calibration error, and prior
-  sensitivity.
+- [x] **External association benchmark:** Chandra-anchored XMM-COSMOS--IRAC test completed with
+  positives, ambiguity strata, shifted controls, frozen splits, and a failed primary rule.
+- [x] **Pair-score diagnostics:** report pairwise reliability tables, Brier score, log loss,
+  ECE, ranking, error/separation/density strata, and an intercept-only calibration test.
+- [ ] **Source-level probability model:** normalize over all candidates plus `no counterpart`;
+  learn the existence prior without using the spent COSMOS test split.
+- [ ] **Additional held-out validation:** add independently established real unmatched cases,
+  a new untouched field/catalog, and the official Gaia DR2-DR3 neighborhood mapping.
+- [ ] **Sensitivity:** quantify candidate-radius, prior, and unmatched-decision sensitivity on
+  development/calibration data only.
 - [ ] **Astrometric model:** full covariance propagation, blending diagnostics, and selection
   functions.
 - [ ] **FLINT-alpha:** only after association probabilities are independently calibrated,
@@ -207,6 +230,8 @@ draft rather than a proposal.
   A89.
 - Salvato, M., et al. (2018). *Finding counterparts for all-sky X-ray surveys with NWAY.* MNRAS
   473, 4937.
+- Marchesi, S., et al. (2016). *The Chandra COSMOS-Legacy Survey: Optical/IR
+  Identifications.* ApJ 817, 34.
 - Cantat-Gaudin, T. & Anders, F. (2020). *Clusters and mirages.* A&A 633, A99.
 - Marrese, P. M., et al. (2019). *Gaia Data Release 2: Cross-match with external catalogues.*
   A&A 621, A144.

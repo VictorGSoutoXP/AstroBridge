@@ -1,0 +1,173 @@
+{
+  "benchmark_id": "xmm-cosmos-irac-chandra-v1",
+  "elapsed_seconds": 20.573062,
+  "environment": {
+    "packages": {
+      "astrobridge": "0.2.0.dev0",
+      "astropy": "7.2.0",
+      "numpy": "1.26.4",
+      "pandas": "2.2.2",
+      "scipy": "1.13.1"
+    },
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+  },
+  "finished_utc": "2026-08-29T15:20:20.154907+00:00",
+  "inputs": [
+    {
+      "actual_bytes": 51840,
+      "actual_rows": 1797,
+      "actual_sha256": "9b2728376ff1b3f265923a2b7d2cd5a1f94da67739ef8eee308078017ac1a970",
+      "columns": [
+        "ID",
+        "RA",
+        "DEC",
+        "pos_err"
+      ],
+      "expected_bytes": 51840,
+      "expected_rows": 1797,
+      "file_mtime_utc": "2026-08-29T14:54:38.529202+00:00",
+      "filename": "COSMOS_XMM.fits",
+      "path": "C:\\Users\\N\u00e1gela\\OneDrive\\Documentos\\ChatGPT\\New project\\data\\raw\\xmm_cosmos_v1\\COSMOS_XMM.fits",
+      "sha256": "9b2728376ff1b3f265923a2b7d2cd5a1f94da67739ef8eee308078017ac1a970",
+      "skyarea_square_deg": 2.0,
+      "url": "https://raw.githubusercontent.com/JohannesBuchner/nway/a37be1f9402ea2e7d6ff5f022f5f23ad94ff15fc/doc/COSMOS_XMM.fits"
+    },
+    {
+      "actual_bytes": 11067840,
+      "actual_rows": 345512,
+      "actual_sha256": "7db44b04fe8fcffc87087f8586e31c766128e4343d86a9fb2aca85e1ed9ec274",
+      "columns": [
+        "ID",
+        "RA",
+        "DEC",
+        "mag_ch1",
+        "err_ch1"
+      ],
+      "expected_bytes": 11067840,
+      "expected_rows": 345512,
+      "file_mtime_utc": "2026-08-29T14:54:40.814234+00:00",
+      "filename": "COSMOS_IRAC.fits",
+      "path": "C:\\Users\\N\u00e1gela\\OneDrive\\Documentos\\ChatGPT\\New project\\data\\raw\\xmm_cosmos_v1\\COSMOS_IRAC.fits",
+      "sha256": "7db44b04fe8fcffc87087f8586e31c766128e4343d86a9fb2aca85e1ed9ec274",
+      "skyarea_square_deg": 2.0,
+      "url": "https://raw.githubusercontent.com/JohannesBuchner/nway/a37be1f9402ea2e7d6ff5f022f5f23ad94ff15fc/doc/COSMOS_IRAC.fits"
+    },
+    {
+      "actual_bytes": 1252800,
+      "actual_rows": 4016,
+      "actual_sha256": "3a9eab9fc7244d444b0500ebcdfa4b20aeda520dd29114ea5a1b9d1b1e16c5f2",
+      "columns": [
+        "id_x",
+        "RA_x",
+        "DEC_x",
+        "DET_ML_F",
+        "DET_ML_S",
+        "DET_ML_H",
+        "flux_F",
+        "flux_S",
+        "flux_H",
+        "HR",
+        "HR_lo_lim",
+        "HR_up_lim",
+        "id_i",
+        "ra_i",
+        "dec_i",
+        "i_mag",
+        "i_mag_err",
+        "flag_i_mag",
+        "id_k_uv",
+        "ra_k_uv",
+        "dec_k_uv",
+        "k_uv_mag",
+        "k_uv_mag_err",
+        "id_k_cfht",
+        "ra_k_cfht",
+        "dec_k_cfht",
+        "k_cfht_mag",
+        "k_cfht_mag_err",
+        "ra_irac",
+        "dec_irac",
+        "irac_mag",
+        "irac_mag_err",
+        "ra_splash",
+        "dec_splash",
+        "splash_mag",
+        "splash_mag_err",
+        "final_id_flag",
+        "star_flag",
+        "z_best",
+        "z_spec",
+        "Instr",
+        "Qg",
+        "spec_type",
+        "z_phot",
+        "phot_type",
+        "id_xmm",
+        "dist_lum",
+        "Lx_0510",
+        "Lx_052",
+        "Lx_210",
+        "NH",
+        "abs_corr_0510",
+        "abs_corr_052",
+        "abs_corr_210",
+        "NH_lo",
+        "abs_corr_0510_lo",
+        "abs_corr_052_lo",
+        "abs_corr_210_lo",
+        "NH_up",
+        "abs_corr_0510_up",
+        "abs_corr_052_up",
+        "abs_corr_210_up"
+      ],
+      "expected_bytes": 1252800,
+      "expected_rows": 4016,
+      "file_mtime_utc": "2026-08-29T14:54:43.007465+00:00",
+      "filename": "chandra_COSMOS_legacy_opt_NIR_counterparts_20160113_4d.fits",
+      "path": "C:\\Users\\N\u00e1gela\\OneDrive\\Documentos\\ChatGPT\\New project\\data\\raw\\xmm_cosmos_v1\\chandra_COSMOS_legacy_opt_NIR_counterparts_20160113_4d.fits",
+      "sha256": "3a9eab9fc7244d444b0500ebcdfa4b20aeda520dd29114ea5a1b9d1b1e16c5f2",
+      "skyarea_square_deg": null,
+      "url": "https://irsa.ipac.caltech.edu/data/COSMOS/tables/chandra/chandra_COSMOS_legacy_opt_NIR_counterparts_20160113_4d.fits"
+    }
+  ],
+  "outputs": {
+    "cases.csv": {
+      "bytes": 324919,
+      "sha256": "4dda77452f3641181c7267bf064442167b09e466d29d06818d35432996c793f4"
+    },
+    "label_links.csv": {
+      "bytes": 42022,
+      "sha256": "e9a09d9543afa59dd1977c07751500f2d5ffad7cc6e862407d2fb1da543b3191"
+    },
+    "metrics.json": {
+      "bytes": 110879,
+      "sha256": "194f261318af8b0634b33771188f316accbf16b5f44f5c33de4be4a6587bdef1"
+    },
+    "predicted_candidates.csv": {
+      "bytes": 4378996,
+      "sha256": "b9532129395ec45f69492c9f5b875dd55db76aa81fc549ecbec1d50de9906a69"
+    },
+    "shifted_control_candidates.csv": {
+      "bytes": 1921009,
+      "sha256": "9590c4c54143484b322e9522f479bc8f6b3141982531091d87dcf998caee6ac0"
+    },
+    "shifted_controls.csv": {
+      "bytes": 160560,
+      "sha256": "32abcbb92273e2e5746077b11c2fdfa9fd6adf581dd6cc1fbd66de1ecabce062"
+    },
+    "truth_pairs.csv": {
+      "bytes": 38525,
+      "sha256": "c297715106d4ed48e2e4912081d8d71e29a233d263d496cae99866a0cc8b61a9"
+    }
+  },
+  "protocol_boundary": "dcf57d9c9bda375630566422de2b735af3c0166d",
+  "run_commit": "0220b3ef363300095f9c27f1ed59c4c466aa5947",
+  "schema_version": 1,
+  "source_pages": {
+    "marchesi_catalog": "https://cdsarc.cds.unistra.fr/viz-bin/ReadMe/J/ApJ/817/34",
+    "nway": "https://github.com/JohannesBuchner/nway",
+    "nway_paper": "https://academic.oup.com/mnras/article/473/4/4937/4554396"
+  },
+  "started_utc": "2026-08-29T15:19:59.581845+00:00"
+}
