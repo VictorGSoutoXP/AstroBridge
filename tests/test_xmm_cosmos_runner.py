@@ -7,6 +7,7 @@ _SCRIPT = run_path(
     str(Path(__file__).resolve().parents[1] / "scripts" / "run_xmm_cosmos_benchmark.py")
 )
 attach_case_outcomes = _SCRIPT["_attach_case_outcomes"]
+write_json = _SCRIPT["_write_json"]
 
 
 def test_abstention_is_counted_as_incorrect_without_nullable_boolean():
@@ -39,3 +40,11 @@ def test_abstention_is_counted_as_incorrect_without_nullable_boolean():
     assert not outcome["correct_raw"]
     assert not outcome["correct_calibrated"]
     assert pd.isna(outcome["selected_right_id_raw"])
+
+
+def test_json_writer_uses_platform_independent_lf(tmp_path):
+    output = tmp_path / "artifact.json"
+
+    write_json(output, {"values": [1, 2]})
+
+    assert output.read_bytes() == b'{\n  "values": [\n    1,\n    2\n  ]\n}'

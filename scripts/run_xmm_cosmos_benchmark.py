@@ -707,6 +707,13 @@ def _json_default(value: Any) -> Any:
     raise TypeError(f"not JSON serializable: {type(value).__name__}")
 
 
+def _write_json(path: Path, value: Any) -> None:
+    """Write deterministic UTF-8 JSON without platform newline translation."""
+
+    content = json.dumps(value, indent=2, sort_keys=True, default=_json_default)
+    path.write_bytes(content.encode("utf-8"))
+
+
 def run(raw_dir: Path, output_dir: Path) -> dict[str, Any]:
     git_commit = _assert_clean_tracked_worktree()
     started_utc = datetime.now(UTC)
@@ -836,10 +843,7 @@ def run(raw_dir: Path, output_dir: Path) -> dict[str, Any]:
     control_candidates.sort_values(["left_index", "distance_arcsec", "right_index"]).to_csv(
         output_dir / "shifted_control_candidates.csv", index=False, lineterminator="\n"
     )
-    (output_dir / "metrics.json").write_text(
-        json.dumps(metrics, indent=2, sort_keys=True, default=_json_default),
-        encoding="utf-8",
-    )
+    _write_json(output_dir / "metrics.json", metrics)
 
     finished_utc = datetime.now(UTC)
     manifest = {
@@ -873,10 +877,7 @@ def run(raw_dir: Path, output_dir: Path) -> dict[str, Any]:
             "nway_paper": ("https://academic.oup.com/mnras/article/473/4/4937/4554396"),
         },
     }
-    (output_dir / "manifest.json").write_text(
-        json.dumps(manifest, indent=2, sort_keys=True, default=_json_default),
-        encoding="utf-8",
-    )
+    _write_json(output_dir / "manifest.json", manifest)
     return metrics
 
 
