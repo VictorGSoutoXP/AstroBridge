@@ -5,6 +5,14 @@ this benchmark. The first Git commit containing this file is the internal regist
 boundary; its hash must be copied into the results report. This is not a public or independent
 preregistration.
 
+**Execution note (2026-08-29):** the first attempt from runner commit `ccaaf21` aborted before
+writing any metrics or output artifacts. The aggregation code represented an abstention as a
+nullable string and then attempted to cast its nullable equality result directly to an integer.
+The traceback exposed no scientific outcome. The corrective change explicitly maps a missing
+selection to `correct = false` and adds a regression test. No input, label, split, score,
+threshold, exclusion, metric, or decision rule changed. The first successful run after this
+documented software-only correction is the valid run.
+
 ## Question and scope
 
 Test whether AstroBridge can recover independently established IRAC counterparts when given

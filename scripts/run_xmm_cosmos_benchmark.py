@@ -338,9 +338,14 @@ def _attach_case_outcomes(
     truth_distance = truth_edges.set_index("case_id")["distance_arcsec"].to_dict()
     output["truth_in_candidates"] = output["case_id"].isin(set(truth_edges["case_id"]))
     output["truth_distance_arcsec"] = output["case_id"].map(truth_distance)
-    output["correct_raw"] = output["selected_right_id_raw"].eq(output["truth_right_id"])
-    output["correct_calibrated"] = output["selected_right_id_calibrated"].eq(
-        output["truth_right_id"]
+    output["correct_raw"] = (
+        output["selected_right_id_raw"].eq(output["truth_right_id"]).fillna(False).astype(bool)
+    )
+    output["correct_calibrated"] = (
+        output["selected_right_id_calibrated"]
+        .eq(output["truth_right_id"])
+        .fillna(False)
+        .astype(bool)
     )
     return output
 
