@@ -1,6 +1,6 @@
 {
   "benchmark_id": "xmm-cosmos-irac-chandra-v1",
-  "elapsed_seconds": 20.573062,
+  "elapsed_seconds": 19.950421,
   "environment": {
     "packages": {
       "astrobridge": "0.2.0.dev0",
@@ -12,7 +12,7 @@
     "platform": "Windows-11-10.0.26200-SP0",
     "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
   },
-  "finished_utc": "2026-08-29T15:20:20.154907+00:00",
+  "finished_utc": "2026-08-29T15:27:11.863024+00:00",
   "inputs": [
     {
       "actual_bytes": 51840,
@@ -141,8 +141,8 @@
       "sha256": "e9a09d9543afa59dd1977c07751500f2d5ffad7cc6e862407d2fb1da543b3191"
     },
     "metrics.json": {
-      "bytes": 110879,
-      "sha256": "194f261318af8b0634b33771188f316accbf16b5f44f5c33de4be4a6587bdef1"
+      "bytes": 106431,
+      "sha256": "a20965d62796cee78eb39b9f7fd45c210c64057ef400c59a23a6976696ac0602"
     },
     "predicted_candidates.csv": {
       "bytes": 4378996,
@@ -162,12 +162,12 @@
     }
   },
   "protocol_boundary": "dcf57d9c9bda375630566422de2b735af3c0166d",
-  "run_commit": "0220b3ef363300095f9c27f1ed59c4c466aa5947",
+  "run_commit": "0f234a8cac8435bc87b8d062e982a62ca562c054",
   "schema_version": 1,
   "source_pages": {
     "marchesi_catalog": "https://cdsarc.cds.unistra.fr/viz-bin/ReadMe/J/ApJ/817/34",
     "nway": "https://github.com/JohannesBuchner/nway",
     "nway_paper": "https://academic.oup.com/mnras/article/473/4/4937/4554396"
   },
-  "started_utc": "2026-08-29T15:19:59.581845+00:00"
+  "started_utc": "2026-08-29T15:26:51.912603+00:00"
 }

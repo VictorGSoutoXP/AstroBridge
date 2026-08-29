@@ -15,7 +15,7 @@ def test_xmm_cosmos_manifest_verifies_every_derived_artifact():
     manifest = _load_json("manifest.json")
 
     assert manifest["protocol_boundary"] == "dcf57d9c9bda375630566422de2b735af3c0166d"
-    assert manifest["run_commit"] == "0220b3ef363300095f9c27f1ed59c4c466aa5947"
+    assert manifest["run_commit"] == "0f234a8cac8435bc87b8d062e982a62ca562c054"
     for filename, metadata in manifest["outputs"].items():
         path = BASE / filename
         assert path.stat().st_size == metadata["bytes"]

@@ -16,11 +16,12 @@ not an all-sky validation or a NASA-readiness claim.
   `699cf2a522a3cd5a7d2d3122f27cf244fb8cc193`.
 - The aborted attempt exposed no scientific result. The protocol records the correction; no
   input, label, split, model setting, threshold, metric, or gate changed.
-- Artifact-normalization commit `0220b3ef363300095f9c27f1ed59c4c466aa5947` forced LF in
-  generated CSVs so manifest hashes remain valid after Git checkout. It changed no scientific
-  value; the final manifest records this commit.
-- A second clean execution from `0220b3e` reproduced every scientific CSV and `metrics.json`
-  byte for byte.
+- Artifact-normalization commits `0220b3ef363300095f9c27f1ed59c4c466aa5947` and
+  `0f234a8cac8435bc87b8d062e982a62ca562c054` forced LF in generated CSV and JSON files so
+  manifest hashes remain valid after Git checkout on every platform. They changed no
+  scientific value; the final manifest records `0f234a8`.
+- A second execution from a clean clone at `0f234a8` reproduced every scientific CSV and
+  `metrics.json` byte for byte.
 - The artifact manifest records source URLs, SHA-256 hashes, byte and row counts, schemas,
   file times, Python and dependency versions, OS, run times, code commit, and output hashes.
 

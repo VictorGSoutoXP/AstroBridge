@@ -14,11 +14,12 @@ threshold, exclusion, metric, or decision rule changed. The first successful run
 documented software-only correction is the valid run.
 
 **Artifact note:** the first successful scientific run from `699cf2a` wrote platform-native
-CSV line endings. Commit `0220b3e` fixed every generated CSV to LF so its manifest hashes
-survive Git checkout; it changed no data value or metric. Two runs from `0220b3e` reproduced
-all scientific artifacts byte for byte.
+line endings. Commits `0220b3e` and `0f234a8` fixed generated CSV and JSON artifacts to LF so
+their manifest hashes survive Git checkout on every platform. They changed no data value or
+metric. Two runs from `0f234a8`, including one from a clean clone, reproduced all scientific
+artifacts byte for byte.
 
-**Outcome:** the valid normalized run from `0220b3e` failed the frozen recall and shifted-
+**Outcome:** the valid normalized run from `0f234a8` failed the frozen recall and shifted-
 control criteria while passing candidate-coverage and precision criteria. See
 `reports/XMM_COSMOS_BENCHMARK_RESULTS.md`.
 

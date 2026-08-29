@@ -4321,7 +4321,7 @@
       "unknown": 199
     }
   },
-  "run_commit": "0220b3ef363300095f9c27f1ed59c4c466aa5947",
+  "run_commit": "0f234a8cac8435bc87b8d062e982a62ca562c054",
   "scope_warning": "One COSMOS field validates neither all-sky generalization nor Gaia-AllWISE epoch propagation; passing is not NASA readiness.",
   "shifted_controls": {
     "constructed": 1050,
