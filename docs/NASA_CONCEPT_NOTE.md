@@ -1,7 +1,7 @@
 # AstroBridge NASA concept note
 
-**Status:** internal research draft; not a NASA proposal, not externally validated, and not
-mapped to a live program element.
+**Status:** internal research draft; not a NASA proposal, not mapped to a live program
+element, and blocked by a failed external benchmark decision rule.
 
 ## Working title
 
@@ -16,8 +16,12 @@ target selection, population inference, and anomaly rankings while still produci
 downstream plots. AstroBridge will develop and externally validate a transparent probabilistic
 cross-identification workflow that propagates astrometric uncertainty and proper motion,
 scores every local candidate, resolves one-to-one ambiguity, and reports calibrated match
-probabilities. The research will benchmark against published, independently established
-high-confidence references and held-out sky fields, quantify performance across density,
+probabilities. A first Chandra-anchored XMM-COSMOS benchmark found complete candidate coverage
+and strong ranking but failed frozen recall and shifted-control gates; pairwise intercept
+calibration did not solve the source-level unmatched decision. The research must therefore
+develop normalized probabilities over candidates plus `no counterpart`, benchmark against
+independently established real unmatched cases and new held-out sky fields, and quantify
+performance across density,
 magnitude, separation, and quality
 regimes, and release reproducible query manifests, software, tables, and calibration products
 under an archival DOI. A later mission-specific work package may evaluate how calibrated

@@ -11,15 +11,21 @@ affiliation, or funding.
 - [x] Run an internally specified held-out Gaia-AllWISE field comparison, invalidate the three
   pre-fix executions, rerun all fields from the corrected boundary, and report the failed
   primary decision rule.
-- [ ] Validate against a published benchmark with independently established,
-  high-confidence counterparts, such as an audited NWAY/XMM-COSMOS dataset.
-- [ ] Add a reliable negative/control class and ambiguous-neighbour strata.
-- [ ] Report results by magnitude, density, separation, proper motion, and quality flag.
+- [x] Run a prospectively specified XMM-COSMOS--IRAC benchmark against Chandra-anchored,
+  high-confidence counterparts and report its failed primary decision rule.
+- [x] Add shifted pseudo-negative controls and set-valued ambiguous-neighbour strata, while
+  keeping their evidentiary limitations explicit.
+- [ ] Add independently established real unmatched cases; shifted controls are not proof of
+  physical absence.
+- [x] Report XMM-COSMOS results by candidate density, separation, and XMM positional error.
+- [ ] Extend held-out strata to magnitude, proper motion, and catalog quality flags.
 - [ ] Propagate the full Gaia astrometric covariance matrix.
 - [ ] Replace the single nominal AllWISE epoch with per-source observation epochs where
   available.
-- [ ] Calibrate posterior probabilities with reliability curves, Brier score, and expected
-  calibration error.
+- [x] Measure conditional pair-score reliability, Brier score, log loss, ECE, and an
+  intercept-only calibration on a frozen split.
+- [ ] Implement and validate normalized source-level probabilities over candidates plus
+  `no counterpart`; pairwise calibration did not control shifted-source selections.
 - [ ] Quantify sensitivity to candidate radius, prior odds, and unmatched threshold.
 
 ## Reproducibility
@@ -30,10 +36,14 @@ affiliation, or funding.
 - [x] Record code commit, tracked-file state, dependency versions, query text,
   artifact-generation timestamp, effective prior, retry count, and content hashes for the
   held-out field run.
-- [ ] Pin a complete computational environment and record operating-system details.
-- [ ] Archive immutable input manifests, query text, retrieval timestamps, and checksums.
+- [x] Record the operating system, Python and package versions, input/output hashes, source
+  URLs, schemas, file times, code commit, and run times for XMM-COSMOS.
+- [ ] Pin a complete computational environment rather than version ranges alone.
+- [x] Commit the XMM-COSMOS input manifest, derived tables, metrics, and output checksums;
+  third-party raw FITS files remain checksum-addressed downloads.
 - [x] Execute and aggregate the real-sky field workflow without hidden notebook state.
 - [x] Publish the field tables and machine-readable aggregate needed to verify current claims.
+- [x] Reproduce every XMM-COSMOS scientific artifact byte for byte in a second clean run.
 
 ## Open science and governance
 
